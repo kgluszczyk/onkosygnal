@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.uv/
+uv.lock
+
+# Node / Astro
+node_modules/
+site/node_modules/
+site/dist/
+site/.astro/
+.wrangler/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Local env
+.env
+.env.local

@@ -1,0 +1,23 @@
+@import 'tailwindcss';
+
+:root {
+  --brand: #0e7490; /* teal-700 — calm, clinical, not alarming red */
+  --brand-ink: #083344;
+  --flag: #b45309; /* amber-700 for red-flag emphasis — attention without panic */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: #1f2937;
+  background: #f8fafc;
+}
+
+/* Focus visibility for keyboard users. */
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}

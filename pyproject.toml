@@ -1,0 +1,18 @@
+[project]
+name = "onkosygnal-pipeline"
+version = "0.1.0"
+description = "OnkoSygnał - Polish cancer awareness & sign-posting knowledge base: curation & validation pipeline"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.7",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.0"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

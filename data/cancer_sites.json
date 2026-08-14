@@ -1,0 +1,125 @@
+[
+  {
+    "id": "lung",
+    "pl_name": "rak płuca",
+    "en_name": "lung cancer",
+    "incidence": { "annual_new_cases_pl": 22000, "as_of_year": 2022, "sex": "all", "source_id": "krn", "verified": false },
+    "early_signs_pl": [
+      "kaszel utrzymujący się dłużej niż 3 tygodnie",
+      "odkrztuszanie krwi (krwioplucie)",
+      "duszność lub świszczący oddech",
+      "nawracające zapalenia płuc",
+      "chrypka utrzymująca się ponad 3 tygodnie"
+    ],
+    "early_signs_source_id": "npo",
+    "dilo_eligible": true,
+    "notes_pl": "Najczęstsza przyczyna zgonów nowotworowych w Polsce. Ryzyko silnie związane z paleniem tytoniu."
+  },
+  {
+    "id": "breast",
+    "pl_name": "rak piersi",
+    "en_name": "breast cancer",
+    "incidence": { "annual_new_cases_pl": 20000, "as_of_year": 2022, "sex": "female", "source_id": "krn", "verified": false },
+    "early_signs_pl": [
+      "wyczuwalny guzek w piersi lub pod pachą",
+      "zmiana kształtu lub wielkości piersi",
+      "wciągnięcie brodawki lub zmiany skórne (np. skórka pomarańczy)",
+      "wyciek z brodawki, zwłaszcza podbarwiony krwią"
+    ],
+    "early_signs_source_id": "npo",
+    "dilo_eligible": true,
+    "notes_pl": "Objęty programem przesiewowym (mammografia). Większość guzków piersi to zmiany łagodne, ale każdy nowy wymaga oceny."
+  },
+  {
+    "id": "colorectal",
+    "pl_name": "rak jelita grubego",
+    "en_name": "colorectal cancer",
+    "incidence": { "annual_new_cases_pl": 18000, "as_of_year": 2022, "sex": "all", "source_id": "krn", "verified": false },
+    "early_signs_pl": [
+      "krew w stolcu lub krwawienie z odbytu",
+      "zmiana rytmu wypróżnień utrzymująca się ponad kilka tygodni",
+      "uczucie niepełnego wypróżnienia",
+      "niedokrwistość z niedoboru żelaza bez wyraźnej przyczyny",
+      "niezamierzona utrata masy ciała"
+    ],
+    "early_signs_source_id": "npo",
+    "dilo_eligible": true,
+    "notes_pl": "Objęty programem przesiewowym (kolonoskopia). Wczesne wykrycie znacząco poprawia rokowanie."
+  },
+  {
+    "id": "prostate",
+    "pl_name": "rak gruczołu krokowego (prostaty)",
+    "en_name": "prostate cancer",
+    "incidence": { "annual_new_cases_pl": 20000, "as_of_year": 2022, "sex": "male", "source_id": "krn", "verified": false },
+    "early_signs_pl": [
+      "częstomocz, zwłaszcza w nocy",
+      "trudności w rozpoczęciu lub utrzymaniu strumienia moczu",
+      "krew w moczu lub nasieniu",
+      "ból w okolicy miednicy lub kręgosłupa"
+    ],
+    "early_signs_source_id": "npo",
+    "dilo_eligible": true,
+    "notes_pl": "Wczesny rak prostaty często przebiega bezobjawowo; objawy bywają związane z łagodnym przerostem."
+  },
+  {
+    "id": "bladder",
+    "pl_name": "rak pęcherza moczowego",
+    "en_name": "bladder cancer",
+    "incidence": { "annual_new_cases_pl": 7500, "as_of_year": 2022, "sex": "all", "source_id": "krn", "verified": false },
+    "early_signs_pl": [
+      "krew w moczu (nawet jednorazowa, bezbolesna)",
+      "częste lub bolesne oddawanie moczu",
+      "nawracające infekcje dróg moczowych"
+    ],
+    "early_signs_source_id": "npo",
+    "dilo_eligible": true,
+    "notes_pl": "Bezbolesny krwiomocz to klasyczny objaw alarmowy wymagający pilnej diagnostyki."
+  },
+  {
+    "id": "stomach",
+    "pl_name": "rak żołądka",
+    "en_name": "stomach (gastric) cancer",
+    "incidence": { "annual_new_cases_pl": 5000, "as_of_year": 2022, "sex": "all", "source_id": "krn", "verified": false },
+    "early_signs_pl": [
+      "trudności lub ból przy połykaniu",
+      "uporczywa niestrawność lub zgaga",
+      "wczesne uczucie sytości, brak apetytu",
+      "niezamierzona utrata masy ciała",
+      "smoliste stolce"
+    ],
+    "early_signs_source_id": "npo",
+    "dilo_eligible": true,
+    "notes_pl": null
+  },
+  {
+    "id": "pancreas",
+    "pl_name": "rak trzustki",
+    "en_name": "pancreatic cancer",
+    "incidence": { "annual_new_cases_pl": 4000, "as_of_year": 2022, "sex": "all", "source_id": "krn", "verified": false },
+    "early_signs_pl": [
+      "żółtaczka (zażółcenie skóry i białek oczu)",
+      "ból w nadbrzuszu promieniujący do pleców",
+      "niezamierzona utrata masy ciała",
+      "nowo rozpoznana cukrzyca w starszym wieku",
+      "jasne, tłuszczowe stolce"
+    ],
+    "early_signs_source_id": "npo",
+    "dilo_eligible": true,
+    "notes_pl": "Objawy często pojawiają się późno; bezbolesna żółtaczka wymaga pilnej oceny."
+  },
+  {
+    "id": "ovarian",
+    "pl_name": "rak jajnika",
+    "en_name": "ovarian cancer",
+    "incidence": { "annual_new_cases_pl": 3700, "as_of_year": 2022, "sex": "female", "source_id": "krn", "verified": false },
+    "early_signs_pl": [
+      "uporczywe wzdęcia lub powiększenie obwodu brzucha",
+      "ból w podbrzuszu lub miednicy",
+      "wczesne uczucie sytości, brak apetytu",
+      "częstsze oddawanie moczu"
+    ],
+    "early_signs_source_id": "npo",
+    "dilo_eligible": true,
+    "notes_pl": "Objawy bywają niespecyficzne i mylone z dolegliwościami trawiennymi — utrzymujące się ponad 3 tygodnie wymagają oceny."
+  }
+]

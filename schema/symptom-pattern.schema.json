@@ -1,0 +1,98 @@
+{
+  "additionalProperties": false,
+  "description": "A recognized symptom (optionally red-flag) that routes free-text input to guidance.\n\nNOTE: this is a RETRIEVAL key, not a risk model. `pl_terms` are the phrases a user might\ntype; the matcher folds Polish diacritics and matches on these. Guidance is categorical.",
+  "properties": {
+    "id": {
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "title": "Id",
+      "type": "string"
+    },
+    "pl_label": {
+      "description": "Canonical Polish name of the symptom.",
+      "title": "Pl Label",
+      "type": "string"
+    },
+    "pl_terms": {
+      "description": "Lay-language aliases/phrasings a user might enter.",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Pl Terms",
+      "type": "array"
+    },
+    "red_flag": {
+      "description": "Whether this is an alarm symptom warranting prompt POZ consultation.",
+      "title": "Red Flag",
+      "type": "boolean"
+    },
+    "associated_site_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Associated Site Ids",
+      "type": "array"
+    },
+    "duration_context_pl": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "e.g. 'utrzymujący się ponad 3 tygodnie'.",
+      "title": "Duration Context Pl"
+    },
+    "age_context_min": {
+      "anyOf": [
+        {
+          "maximum": 120,
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Age above which the red flag is emphasized.",
+      "title": "Age Context Min"
+    },
+    "guidance_pl": {
+      "description": "Categorical sign-posting guidance. No probability.",
+      "title": "Guidance Pl",
+      "type": "string"
+    },
+    "caveat_pl": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Honest context, e.g. that most such symptoms are not cancer.",
+      "title": "Caveat Pl"
+    },
+    "source_id": {
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "title": "Source Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "pl_label",
+    "pl_terms",
+    "red_flag",
+    "guidance_pl",
+    "source_id"
+  ],
+  "title": "SymptomPattern",
+  "type": "object"
+}

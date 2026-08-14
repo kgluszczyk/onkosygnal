@@ -1,0 +1,73 @@
+{
+  "$defs": {
+    "SourceKind": {
+      "enum": [
+        "guideline",
+        "registry",
+        "portal",
+        "regulation",
+        "other"
+      ],
+      "title": "SourceKind",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "A citable provenance record. Every content claim points at one of these.",
+  "properties": {
+    "id": {
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "title": "Id",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "publisher": {
+      "title": "Publisher",
+      "type": "string"
+    },
+    "country": {
+      "description": "ISO-ish country tag, e.g. 'PL' or 'UK'",
+      "title": "Country",
+      "type": "string"
+    },
+    "kind": {
+      "$ref": "#/$defs/SourceKind"
+    },
+    "url": {
+      "title": "Url",
+      "type": "string"
+    },
+    "retrieved": {
+      "description": "When last checked.",
+      "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$",
+      "title": "Retrieved",
+      "type": "string"
+    },
+    "note": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Note"
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "publisher",
+    "country",
+    "kind",
+    "url",
+    "retrieved"
+  ],
+  "title": "Source",
+  "type": "object"
+}

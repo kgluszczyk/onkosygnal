@@ -1,0 +1,21 @@
+{
+  "intro_pl": "Jeśli lekarz podejrzewa u Ciebie nowotwór, ma prawo wystawić kartę DiLO (Diagnostyki i Leczenia Onkologicznego). Otwiera ona szybką ścieżkę onkologiczną — bez limitów NFZ i z ustawowymi terminami. Wielu pacjentów nie wie, że taka karta im przysługuje.",
+  "rights_pl": [
+    "Diagnostyka onkologiczna bez limitów NFZ (nie wliczasz się do kolejki ogólnej).",
+    "Ustawowe, maksymalne terminy na kolejne etapy diagnostyki i rozpoczęcie leczenia.",
+    "Wielodyscyplinarne konsylium (co najmniej 3 lekarzy) ustalające plan leczenia.",
+    "Koordynator, który pomaga zorganizować kolejne wizyty i badania."
+  ],
+  "deadlines": [
+    { "stage_pl": "diagnostyka wstępna", "days": 28 },
+    { "stage_pl": "diagnostyka pogłębiona (łącznie)", "days": 49 },
+    { "stage_pl": "rozpoczęcie leczenia po konsylium", "days": 14 }
+  ],
+  "what_to_ask_pl": [
+    "Powiedz lekarzowi POZ, jak długo trwają objawy i czy się nasilają.",
+    "Zapytaj wprost, czy Twoje objawy kwalifikują się do karty DiLO / szybkiej ścieżki onkologicznej.",
+    "Poproś o skierowanie na potrzebne badania lub do specjalisty.",
+    "Zapisz sobie, kiedy objawy się zaczęły i co je nasila — to pomoże lekarzowi w decyzji."
+  ],
+  "source_id": "mz-dilo"
+}

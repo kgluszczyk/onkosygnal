@@ -1,0 +1,30 @@
+---
+import SymptomSearch from '../SymptomSearch.tsx';
+import { ui } from '../../i18n/ui';
+---
+<section>
+  <h1 class="text-2xl font-bold text-slate-900">{ui.tagline}</h1>
+  <p class="mt-2 text-slate-600">
+    Opisz objawy własnymi słowami. Pokażemy, które z nich onkolodzy uznają za warte
+    konsultacji, jak częsty jest dany nowotwór w Polsce oraz jak rozmawiać z lekarzem POZ —
+    łącznie z prawem do szybkiej ścieżki (karta DiLO).
+  </p>
+
+  <div class="mt-6">
+    <SymptomSearch client:load />
+  </div>
+
+  <section class="mt-10 border-t border-slate-200 pt-6">
+    <h2 class="font-semibold text-slate-900">Jak to działa</h2>
+    <ol class="mt-2 list-decimal list-inside text-sm text-slate-600 space-y-1">
+      <li>Dopasowujemy Twój opis do rozpoznanych objawów (bez oceny ryzyka).</li>
+      <li>Pokazujemy oficjalne wskazówki i kontekst epidemiologiczny (dane KRN).</li>
+      <li>Kierujemy do lekarza POZ i wyjaśniamy Twoje prawa jako pacjenta.</li>
+    </ol>
+    <p class="mt-3 text-sm text-slate-500">
+      Nie podajemy „procentu ryzyka raka” — takie liczby dla pojedynczych objawów są
+      niskie i mylące, a rzetelne oszacowanie wymaga badań lekarskich.
+      <a href="/o-projekcie" class="underline">Dlaczego?</a>
+    </p>
+  </section>
+</section>

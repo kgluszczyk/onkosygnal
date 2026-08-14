@@ -1,0 +1,119 @@
+{
+  "$defs": {
+    "Incidence": {
+      "additionalProperties": false,
+      "description": "Population incidence used ONLY as context ('how common in Poland'), never as a\nper-user risk. Seed values are approximate and must be verified against the KRN report.",
+      "properties": {
+        "annual_new_cases_pl": {
+          "minimum": 0,
+          "title": "Annual New Cases Pl",
+          "type": "integer"
+        },
+        "as_of_year": {
+          "maximum": 2100,
+          "minimum": 1990,
+          "title": "As Of Year",
+          "type": "integer"
+        },
+        "sex": {
+          "$ref": "#/$defs/Sex",
+          "default": "all"
+        },
+        "source_id": {
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "verified": {
+          "default": false,
+          "description": "True only once checked against the primary KRN figure. Unverified figures are flagged by validate.py and must not be shipped as fact.",
+          "title": "Verified",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "annual_new_cases_pl",
+        "as_of_year",
+        "source_id"
+      ],
+      "title": "Incidence",
+      "type": "object"
+    },
+    "Sex": {
+      "enum": [
+        "all",
+        "female",
+        "male"
+      ],
+      "title": "Sex",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "A cancer site with Polish incidence context and official early-warning signs.",
+  "properties": {
+    "id": {
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "title": "Id",
+      "type": "string"
+    },
+    "pl_name": {
+      "title": "Pl Name",
+      "type": "string"
+    },
+    "en_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "En Name"
+    },
+    "incidence": {
+      "$ref": "#/$defs/Incidence"
+    },
+    "early_signs_pl": {
+      "description": "Official early/warning signs (Narodowy Portal Onkologiczny), verbatim-ish.",
+      "items": {
+        "type": "string"
+      },
+      "title": "Early Signs Pl",
+      "type": "array"
+    },
+    "early_signs_source_id": {
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "title": "Early Signs Source Id",
+      "type": "string"
+    },
+    "dilo_eligible": {
+      "default": true,
+      "description": "Whether suspicion of this cancer can open a DiLO fast-track card.",
+      "title": "Dilo Eligible",
+      "type": "boolean"
+    },
+    "notes_pl": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Notes Pl"
+    }
+  },
+  "required": [
+    "id",
+    "pl_name",
+    "incidence",
+    "early_signs_source_id"
+  ],
+  "title": "CancerSite",
+  "type": "object"
+}

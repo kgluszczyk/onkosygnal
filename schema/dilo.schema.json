@@ -1,0 +1,69 @@
+{
+  "$defs": {
+    "DiloDeadline": {
+      "additionalProperties": false,
+      "properties": {
+        "stage_pl": {
+          "title": "Stage Pl",
+          "type": "string"
+        },
+        "days": {
+          "minimum": 0,
+          "title": "Days",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "stage_pl",
+        "days"
+      ],
+      "title": "DiloDeadline",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "The DiLO fast-track oncology pathway module — the product differentiator.",
+  "properties": {
+    "intro_pl": {
+      "title": "Intro Pl",
+      "type": "string"
+    },
+    "rights_pl": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Rights Pl",
+      "type": "array"
+    },
+    "deadlines": {
+      "items": {
+        "$ref": "#/$defs/DiloDeadline"
+      },
+      "title": "Deadlines",
+      "type": "array"
+    },
+    "what_to_ask_pl": {
+      "description": "Concrete things to say/ask at the POZ appointment.",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "What To Ask Pl",
+      "type": "array"
+    },
+    "source_id": {
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "title": "Source Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "intro_pl",
+    "rights_pl",
+    "what_to_ask_pl",
+    "source_id"
+  ],
+  "title": "DiloInfo",
+  "type": "object"
+}

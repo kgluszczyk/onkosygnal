@@ -1,0 +1,42 @@
+[
+  {
+    "id": "npo",
+    "title": "Narodowy Portal Onkologiczny — Czy mam nowotwór? / objawy wczesne",
+    "publisher": "Ministerstwo Zdrowia / Narodowy Instytut Onkologii im. Marii Skłodowskiej-Curie",
+    "country": "PL",
+    "kind": "portal",
+    "url": "https://onkologia.pacjent.gov.pl/pl/pacjent/podejrzenie/czy-mam-nowotwor",
+    "retrieved": "2026-08",
+    "note": "Authoritative Polish-language early-warning-sign guidance. Prose only — no interactive checker."
+  },
+  {
+    "id": "krn",
+    "title": "Krajowy Rejestr Nowotworów — nowotwory złośliwe w Polsce",
+    "publisher": "Narodowy Instytut Onkologii (KRN)",
+    "country": "PL",
+    "kind": "registry",
+    "url": "https://onkologia.org.pl/pl/raporty",
+    "retrieved": "2026-08",
+    "note": "Population incidence/mortality. Published as PDF reports (no public API). Seed incidence figures in this KB are APPROXIMATE and must be verified against the specific report."
+  },
+  {
+    "id": "nice-ng12",
+    "title": "NICE NG12 — Suspected cancer: recognition and referral",
+    "publisher": "National Institute for Health and Care Excellence (UK)",
+    "country": "UK",
+    "kind": "guideline",
+    "url": "https://www.nice.org.uk/guidance/ng12",
+    "retrieved": "2026-08",
+    "note": "Structured red-flag / 2-week-wait referral criteria by cancer site. UK-derived — used here as the red-flag ROUTING backbone, NOT as Polish PPV data."
+  },
+  {
+    "id": "mz-dilo",
+    "title": "Karta Diagnostyki i Leczenia Onkologicznego (DiLO) — pakiet onkologiczny",
+    "publisher": "Ministerstwo Zdrowia / NFZ",
+    "country": "PL",
+    "kind": "regulation",
+    "url": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20250000490",
+    "retrieved": "2026-08",
+    "note": "Rozporządzenie MZ z 9.04.2025 ws. wzoru karty DiLO. Fast-track pathway: no NFZ limits + statutory deadlines."
+  }
+]
