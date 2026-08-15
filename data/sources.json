@@ -30,6 +30,16 @@
     "note": "Structured red-flag / 2-week-wait referral criteria by cancer site. UK-derived — used here as the red-flag ROUTING backbone, NOT as Polish PPV data."
   },
   {
+    "id": "nfz-profilaktyka",
+    "title": "Programy profilaktyczne NFZ (mammografia, cytologia, kolonoskopia)",
+    "publisher": "Narodowy Fundusz Zdrowia",
+    "country": "PL",
+    "kind": "portal",
+    "url": "https://www.nfz.gov.pl/dla-pacjenta/programy-profilaktyczne/",
+    "retrieved": "2026-08",
+    "note": "Age ranges: mammografia 45-74 (co 2 lata, od XI 2023), cytologia 25-64 (co 3 lata), kolonoskopia 50-65. Verify against NFZ before launch — programme criteria change."
+  },
+  {
     "id": "mz-dilo",
     "title": "Karta Diagnostyki i Leczenia Onkologicznego (DiLO) — pakiet onkologiczny",
     "publisher": "Ministerstwo Zdrowia / NFZ",

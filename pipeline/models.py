@@ -24,6 +24,15 @@ class Sex(str, Enum):
     male = "male"
 
 
+class Urgency(str, Enum):
+    """Escalation tier for a symptom pattern. Drives whether we point to 112/SOR,
+    a prompt POZ visit, or a routine one. Never used to withhold a red flag."""
+
+    emergency = "emergency"  # 112 / SOR now
+    urgent = "urgent"        # see POZ promptly
+    routine = "routine"      # worth mentioning to POZ, no rush
+
+
 class SourceKind(str, Enum):
     guideline = "guideline"          # e.g. NICE NG12
     registry = "registry"            # e.g. KRN / onkologia.org.pl
@@ -101,6 +110,10 @@ class SymptomPattern(BaseModel):
     red_flag: bool = Field(
         description="Whether this is an alarm symptom warranting prompt POZ consultation."
     )
+    urgency: Urgency = Field(
+        default=Urgency.routine,
+        description="Escalation tier. Emergency -> point to 112/SOR; urgent -> prompt POZ.",
+    )
     associated_site_ids: list[str] = Field(default_factory=list)
     duration_context_pl: str | None = Field(
         default=None, description="e.g. 'utrzymujący się ponad 3 tygodnie'."
@@ -114,6 +127,31 @@ class SymptomPattern(BaseModel):
         description="Honest context, e.g. that most such symptoms are not cancer.",
     )
     source_id: str = Field(pattern=SLUG_PATTERN)
+
+
+class ScreeningProgram(BaseModel):
+    """A free (NFZ) Polish cancer screening programme, shown by sex/age eligibility.
+    Purely informational sign-posting to established public programmes — not per-user risk."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    id: str = Field(pattern=SLUG_PATTERN)
+    pl_name: str
+    sex: Sex
+    age_min: int = Field(ge=0, le=120)
+    age_max: int = Field(ge=0, le=120)
+    interval_years: int | None = Field(
+        default=None, ge=0, description="Screening interval; None = one-off / see programme."
+    )
+    pl_description: str
+    booking_pl: str | None = Field(default=None, description="How to enrol (e.g. no referral).")
+    source_id: str = Field(pattern=SLUG_PATTERN)
+
+    @model_validator(mode="after")
+    def _check_age_range(self) -> "ScreeningProgram":
+        if self.age_max < self.age_min:
+            raise ValueError(f"screening '{self.id}': age_max < age_min")
+        return self
 
 
 class DiloDeadline(BaseModel):
@@ -145,6 +183,7 @@ class KnowledgeBase(BaseModel):
     sources: list[Source]
     cancer_sites: list[CancerSite]
     symptom_patterns: list[SymptomPattern]
+    screening: list[ScreeningProgram]
     dilo: DiloInfo
 
     # --- cross-reference integrity -------------------------------------------------
@@ -162,6 +201,7 @@ class KnowledgeBase(BaseModel):
             ("sources", self.sources),
             ("cancer_sites", self.cancer_sites),
             ("symptom_patterns", self.symptom_patterns),
+            ("screening", self.screening),
         ):
             ids = [i.id for i in items]
             dupes = {i for i in ids if ids.count(i) > 1}
@@ -179,6 +219,9 @@ class KnowledgeBase(BaseModel):
                     raise ValueError(
                         f"symptom_pattern '{p.id}' references unknown cancer_site '{sid}'"
                     )
+
+        for prog in self.screening:
+            require_source(prog.source_id, f"screening '{prog.id}'")
 
         require_source(self.dilo.source_id, "dilo")
         return self

@@ -1,4 +1,16 @@
 {
+  "$defs": {
+    "Urgency": {
+      "description": "Escalation tier for a symptom pattern. Drives whether we point to 112/SOR,\na prompt POZ visit, or a routine one. Never used to withhold a red flag.",
+      "enum": [
+        "emergency",
+        "urgent",
+        "routine"
+      ],
+      "title": "Urgency",
+      "type": "string"
+    }
+  },
   "additionalProperties": false,
   "description": "A recognized symptom (optionally red-flag) that routes free-text input to guidance.\n\nNOTE: this is a RETRIEVAL key, not a risk model. `pl_terms` are the phrases a user might\ntype; the matcher folds Polish diacritics and matches on these. Guidance is categorical.",
   "properties": {
@@ -25,6 +37,11 @@
       "description": "Whether this is an alarm symptom warranting prompt POZ consultation.",
       "title": "Red Flag",
       "type": "boolean"
+    },
+    "urgency": {
+      "$ref": "#/$defs/Urgency",
+      "default": "routine",
+      "description": "Escalation tier. Emergency -> point to 112/SOR; urgent -> prompt POZ."
     },
     "associated_site_ids": {
       "items": {

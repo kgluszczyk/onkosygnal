@@ -12,6 +12,12 @@ site/dist/
 site/.astro/
 .wrangler/
 
+# Playwright
+site/test-results/
+site/playwright-report/
+site/blob-report/
+site/playwright/.cache/
+
 # OS / editor
 .DS_Store
 Thumbs.db

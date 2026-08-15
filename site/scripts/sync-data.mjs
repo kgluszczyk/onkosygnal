@@ -17,7 +17,13 @@ const SITE = resolve(__dirname, '..');
 const ROOT_DATA = resolve(SITE, '..', 'data');
 const DEST = join(SITE, 'src', 'data');
 
-const FILES = ['sources.json', 'cancer_sites.json', 'symptom_patterns.json', 'dilo.json'];
+const FILES = [
+  'sources.json',
+  'cancer_sites.json',
+  'symptom_patterns.json',
+  'screening.json',
+  'dilo.json',
+];
 
 if (!existsSync(ROOT_DATA)) {
   console.log('[sync-data] ../data not found — using committed src/data copies.');
