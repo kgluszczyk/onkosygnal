@@ -1,0 +1,7 @@
+# OnkoSygnał — educational cancer-symptom sign-posting (not a diagnostic device).
+# Crawling and AI indexing are welcome; discoverability is a project goal.
+User-agent: *
+Allow: /
+
+# Sitemap is generated at build time by @astrojs/sitemap.
+Sitemap: https://onkosygnal.pl/sitemap-index.xml

@@ -7,10 +7,50 @@ import { ui } from '../i18n/ui';
 interface Props {
   title?: string;
   description?: string;
+  /** OpenGraph object type — 'website' for the home page, 'article' for content pages. */
+  ogType?: 'website' | 'article';
+  /**
+   * Extra JSON-LD emitted alongside the default MedicalWebPage node
+   * (e.g. a FAQPage on pages that carry genuine Q&A content).
+   */
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
-const { title, description } = Astro.props;
+const { title, description, ogType = 'website', structuredData } = Astro.props;
 const pageTitle = title ? `${title} — ${ui.siteName}` : `${ui.siteName} — ${ui.tagline}`;
 const desc = description ?? ui.disclaimer;
+
+// Absolute canonical URL derived from the configured production origin (astro.config `site`).
+// Inherits Astro's route form (trailing slash) so canonical matches the sitemap entry.
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+
+// Default structured data. This is health-information sign-posting — education, not
+// diagnosis — so MedicalWebPage is the honest, citable type. Populated only from real
+// site facts; nothing here asserts a diagnosis or personal risk.
+const medicalWebPage = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: pageTitle,
+  description: desc,
+  url: canonicalURL,
+  inLanguage: 'pl',
+  isPartOf: {
+    '@type': 'WebSite',
+    name: ui.siteName,
+    url: new URL('/', Astro.site).href,
+  },
+  publisher: { '@type': 'Organization', name: ui.siteName },
+  audience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  about: {
+    '@type': 'MedicalCondition',
+    name: 'Nowotwory złośliwe',
+    alternateName: 'Rak',
+  },
+};
+
+const jsonLdNodes = [
+  medicalWebPage,
+  ...(Array.isArray(structuredData) ? structuredData : structuredData ? [structuredData] : []),
+];
 ---
 
 <!doctype html>
@@ -20,7 +60,26 @@ const desc = description ?? ui.disclaimer;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{pageTitle}</title>
     <meta name="description" content={desc} />
+    <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content={ui.siteName} />
+    <meta property="og:locale" content="pl_PL" />
+
+    <!-- Twitter / X card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={desc} />
+
+    <!-- Structured data: MedicalWebPage (+ FAQPage where a page has genuine Q&A) -->
+    {jsonLdNodes.map((node) => (
+      <script type="application/ld+json" set:html={JSON.stringify(node)} />
+    ))}
   </head>
   <body class="min-h-screen flex flex-col">
     <NavBar />

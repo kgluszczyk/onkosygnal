@@ -1,8 +1,45 @@
 ---
 import Base from '../layouts/Base.astro';
 import { sources } from '../lib/kb';
+
+// FAQPage built strictly from the visible Q&A copy on this page (education, not diagnosis).
+// Answers mirror the on-page text so the markup faithfully represents rendered content.
+const faqPage = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Czym jest OnkoSygnał?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text:
+          'OnkoSygnał to narzędzie edukacyjne. Pomaga rozpoznać, które objawy warto ' +
+          'skonsultować z lekarzem POZ, i wyjaśnia prawa pacjenta onkologicznego w Polsce ' +
+          '(karta DiLO). Nie stawia diagnozy i nie oblicza ryzyka raka.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Dlaczego OnkoSygnał nie podaje procentu ryzyka raka?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text:
+          'Z trzech powodów. Brak polskich danych: wartości predykcyjne objawów pochodzą z ' +
+          'badań brytyjskich (NICE NG12, badania Hamiltona), a polski KRN publikuje ' +
+          'zachorowalność, a nie predykcyjność objawów — osobisty „procent” byłby przeniesioną ' +
+          'liczbą brytyjską bez podstaw dla polskiej populacji. Psychologia: dla pojedynczych ' +
+          'objawów wartości te są niskie (rzędu 2–3%), jednocześnie niepokoją i fałszywie ' +
+          'uspokajają; taką liczbę powinien interpretować lekarz, nie aplikacja. Regulacje: ' +
+          'oprogramowanie, które na podstawie objawów podaje diagnozę lub ryzyko, jest w UE ' +
+          '(MDR) traktowane jako wyrób medyczny; sygnalizowanie „warto to skonsultować” ' +
+          'pozostaje po bezpiecznej stronie tej granicy.',
+      },
+    },
+  ],
+};
 ---
-<Base title="O projekcie">
+<Base title="O projekcie" ogType="article" structuredData={faqPage}>
   <article class="prose-sm max-w-none">
     <h1 class="text-2xl font-bold text-slate-900">O projekcie i metodyce</h1>
 
