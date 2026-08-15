@@ -38,12 +38,18 @@ const cfBeacon = import.meta.env.PUBLIC_CF_BEACON;
     )}
   </head>
   <body class="min-h-screen flex flex-col">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-2 focus:left-2 focus:rounded focus:bg-white focus:px-3 focus:py-2 focus:shadow"
+    >
+      {ui.skipToContent}
+    </a>
     <NavBar />
     <!-- Load-bearing disclaimer: always visible, above the fold. -->
-    <div class="bg-amber-50 border-b border-amber-200 text-amber-900 text-sm">
+    <div class="bg-amber-50 border-b border-amber-200 text-amber-900 text-sm" role="note">
       <p class="max-w-3xl mx-auto px-4 py-2">{ui.disclaimer}</p>
     </div>
-    <main class="flex-1 w-full max-w-3xl mx-auto px-4 py-8">
+    <main id="main" tabindex="-1" class="flex-1 w-full max-w-3xl mx-auto px-4 py-8">
       <slot />
     </main>
     <Footer />

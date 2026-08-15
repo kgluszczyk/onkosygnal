@@ -64,20 +64,20 @@ function ResultCard({ result, ctx }: { result: MatchResult; ctx: UserContext }) 
 
       {sites.length > 0 && (
         <div className="mt-3 border-t border-slate-100 pt-3">
-          <p className="text-xs uppercase tracking-wide text-slate-400">{t.howCommon}</p>
+          <p className="text-xs uppercase tracking-wide text-slate-500">{t.howCommon}</p>
           <ul className="mt-1 space-y-1">
             {sites.map((c) => (
               <li key={c.id} className="text-sm text-slate-700">
                 {c.pl_name}: ~{numberPl(c.incidence.annual_new_cases_pl)} {t.casesPerYear}{' '}
-                <span className="text-slate-400">({c.incidence.as_of_year}, {t.seedNote})</span>
+                <span className="text-slate-500">({c.incidence.as_of_year}, {t.seedNote})</span>
               </li>
             ))}
           </ul>
-          <p className="mt-1 text-xs text-slate-400">{t.context}</p>
+          <p className="mt-1 text-xs text-slate-500">{t.context}</p>
         </div>
       )}
 
-      <p className="mt-3 text-xs text-slate-400">
+      <p className="mt-3 text-xs text-slate-500">
         {t.source}: <SourceLink sourceId={pattern.source_id} />
       </p>
     </article>
@@ -91,13 +91,13 @@ function DiloPanel() {
       <p className="mt-2 text-sm text-slate-700">{dilo.intro_pl}</p>
       <div className="mt-3 grid gap-4 sm:grid-cols-2">
         <div>
-          <p className="text-xs uppercase tracking-wide text-slate-400">{ui.dilo.rights}</p>
+          <p className="text-xs uppercase tracking-wide text-slate-500">{ui.dilo.rights}</p>
           <ul className="mt-1 list-disc list-inside text-sm text-slate-700 space-y-1">
             {dilo.rights_pl.map((r, i) => <li key={i}>{r}</li>)}
           </ul>
         </div>
         <div>
-          <p className="text-xs uppercase tracking-wide text-slate-400">{ui.dilo.deadlines}</p>
+          <p className="text-xs uppercase tracking-wide text-slate-500">{ui.dilo.deadlines}</p>
           <ul className="mt-1 text-sm text-slate-700 space-y-1">
             {dilo.deadlines.map((d, i) => (
               <li key={i}><strong>{d.days}</strong> {ui.dilo.days} — {d.stage_pl}</li>
@@ -106,12 +106,12 @@ function DiloPanel() {
         </div>
       </div>
       <div className="mt-3">
-        <p className="text-xs uppercase tracking-wide text-slate-400">{ui.dilo.whatToAsk}</p>
+        <p className="text-xs uppercase tracking-wide text-slate-500">{ui.dilo.whatToAsk}</p>
         <ul className="mt-1 list-disc list-inside text-sm text-slate-700 space-y-1">
           {dilo.what_to_ask_pl.map((q, i) => <li key={i}>{q}</li>)}
         </ul>
       </div>
-      <p className="mt-3 text-xs text-slate-400">
+      <p className="mt-3 text-xs text-slate-500">
         {ui.search.source}: <SourceLink sourceId={dilo.source_id} />
       </p>
     </section>
@@ -173,11 +173,11 @@ export default function SymptomSearch() {
                 className="w-20 rounded border border-slate-300 px-2 py-1" />
             </label>
           </div>
-          <p className="mt-1 text-xs text-slate-400">{ui.context.hint}</p>
+          <p className="mt-1 text-xs text-slate-500">{ui.context.hint}</p>
         </fieldset>
       </form>
 
-      <div className="mt-6 space-y-4">
+      <div className="mt-6 space-y-4" role="region" aria-label={t.resultsHeading} aria-live="polite">
         {!submitted && (
           <>
             <p className="text-slate-500">{t.empty}</p>

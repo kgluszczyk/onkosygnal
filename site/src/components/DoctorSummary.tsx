@@ -67,7 +67,7 @@ export function DoctorSummary({
                 {r.pattern.pl_label}
                 {tag}
                 {r.pattern.duration_context_pl ? ` — ${r.pattern.duration_context_pl}` : ''}
-                {src ? <span className="text-slate-400"> [{src.title}]</span> : null}
+                {src ? <span className="text-slate-500"> [{src.title}]</span> : null}
               </li>
             );
           })}
@@ -75,7 +75,7 @@ export function DoctorSummary({
 
         {hasRedFlag && <p className="mt-3 text-slate-700">{d.diloNote}</p>}
 
-        <p className="mt-4 text-xs text-slate-400 border-t border-slate-200 pt-2">{d.footer}</p>
+        <p className="mt-4 text-xs text-slate-500 border-t border-slate-200 pt-2">{d.footer}</p>
       </div>
     </section>
   );

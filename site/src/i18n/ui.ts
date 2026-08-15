@@ -2,6 +2,7 @@
 export const ui = {
   siteName: 'OnkoSygnał',
   tagline: 'Które objawy warto skonsultować z lekarzem?',
+  skipToContent: 'Przejdź do treści',
   disclaimer:
     'To narzędzie edukacyjne, nie diagnoza. Nie oblicza Twojego ryzyka raka — pokazuje, ' +
     'które objawy warto skonsultować z lekarzem POZ i jak. W razie niepokojących objawów ' +

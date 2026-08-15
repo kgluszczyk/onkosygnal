@@ -17,7 +17,7 @@
     "kind": "registry",
     "url": "https://onkologia.org.pl/pl/raporty",
     "retrieved": "2026-08",
-    "note": "Population incidence/mortality. Published as PDF reports (no public API). Seed incidence figures in this KB are APPROXIMATE and must be verified against the specific report."
+    "note": "Population incidence/mortality (KRN). Per-cancer figures verified via the Narodowy Portal Onkologiczny 'Kompendium chorób nowotworowych' epidemiology pages (which cite KRN), retrieved 2026-08: lung ~21.5k (2022), breast >21k (current), colorectal 18.8k (2022), bladder ~7.2k and ovary ~3.6k (2013-2022 annual avg). Prostate/stomach/pancreas figures remain approximate (verified:false) — kompendium pages were unreachable; confirm against the KRN report PDF."
   },
   {
     "id": "nice-ng12",

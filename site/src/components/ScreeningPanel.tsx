@@ -28,7 +28,7 @@ export function ScreeningPanel({ ctx }: { ctx: UserContext }) {
               <p>{p.pl_description}</p>
               {p.booking_pl && <p className="text-slate-500">{p.booking_pl}</p>}
               {src && (
-                <p className="mt-1 text-xs text-slate-400">
+                <p className="mt-1 text-xs text-slate-500">
                   {ui.search.source}:{' '}
                   <a href={src.url} target="_blank" rel="noopener noreferrer"
                     className="underline hover:text-slate-600">{src.publisher}</a>

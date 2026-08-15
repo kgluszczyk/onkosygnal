@@ -3,7 +3,7 @@
     "id": "lung",
     "pl_name": "rak płuca",
     "en_name": "lung cancer",
-    "incidence": { "annual_new_cases_pl": 22000, "as_of_year": 2022, "sex": "all", "source_id": "krn", "verified": false },
+    "incidence": { "annual_new_cases_pl": 21500, "as_of_year": 2022, "sex": "all", "source_id": "krn", "verified": true },
     "early_signs_pl": [
       "kaszel utrzymujący się dłużej niż 3 tygodnie",
       "odkrztuszanie krwi (krwioplucie)",
@@ -19,7 +19,7 @@
     "id": "breast",
     "pl_name": "rak piersi",
     "en_name": "breast cancer",
-    "incidence": { "annual_new_cases_pl": 20000, "as_of_year": 2022, "sex": "female", "source_id": "krn", "verified": false },
+    "incidence": { "annual_new_cases_pl": 21000, "as_of_year": 2022, "sex": "female", "source_id": "krn", "verified": true },
     "early_signs_pl": [
       "wyczuwalny guzek w piersi lub pod pachą",
       "zmiana kształtu lub wielkości piersi",
@@ -34,7 +34,7 @@
     "id": "colorectal",
     "pl_name": "rak jelita grubego",
     "en_name": "colorectal cancer",
-    "incidence": { "annual_new_cases_pl": 18000, "as_of_year": 2022, "sex": "all", "source_id": "krn", "verified": false },
+    "incidence": { "annual_new_cases_pl": 18800, "as_of_year": 2022, "sex": "all", "source_id": "krn", "verified": true },
     "early_signs_pl": [
       "krew w stolcu lub krwawienie z odbytu",
       "zmiana rytmu wypróżnień utrzymująca się ponad kilka tygodni",
@@ -65,7 +65,7 @@
     "id": "bladder",
     "pl_name": "rak pęcherza moczowego",
     "en_name": "bladder cancer",
-    "incidence": { "annual_new_cases_pl": 7500, "as_of_year": 2022, "sex": "all", "source_id": "krn", "verified": false },
+    "incidence": { "annual_new_cases_pl": 7200, "as_of_year": 2022, "sex": "all", "source_id": "krn", "verified": true },
     "early_signs_pl": [
       "krew w moczu (nawet jednorazowa, bezbolesna)",
       "częste lub bolesne oddawanie moczu",
@@ -111,7 +111,7 @@
     "id": "ovarian",
     "pl_name": "rak jajnika",
     "en_name": "ovarian cancer",
-    "incidence": { "annual_new_cases_pl": 3700, "as_of_year": 2022, "sex": "female", "source_id": "krn", "verified": false },
+    "incidence": { "annual_new_cases_pl": 3600, "as_of_year": 2022, "sex": "female", "source_id": "krn", "verified": true },
     "early_signs_pl": [
       "uporczywe wzdęcia lub powiększenie obwodu brzucha",
       "ból w podbrzuszu lub miednicy",
