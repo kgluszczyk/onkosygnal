@@ -11,6 +11,8 @@ interface Props {
 const { title, description } = Astro.props;
 const pageTitle = title ? `${title} — ${ui.siteName}` : `${ui.siteName} — ${ui.tagline}`;
 const desc = description ?? ui.disclaimer;
+// Privacy-respecting, cookieless analytics — only emitted if a token is configured.
+const cfBeacon = import.meta.env.PUBLIC_CF_BEACON;
 ---
 
 <!doctype html>
@@ -21,14 +23,33 @@ const desc = description ?? ui.disclaimer;
     <title>{pageTitle}</title>
     <meta name="description" content={desc} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {/*
+      Cloudflare Web Analytics: cookieless, no personal data, off unless PUBLIC_CF_BEACON
+      is set by the operator. SRI is intentionally omitted — Cloudflare rolls this beacon
+      and does not publish a stable hash for it, so a pinned integrity attr would break on
+      their next update. It is Cloudflare's own first-party script.
+    */}
+    {cfBeacon && (
+      <script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: cfBeacon })}
+      />
+    )}
   </head>
   <body class="min-h-screen flex flex-col">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-2 focus:left-2 focus:rounded focus:bg-white focus:px-3 focus:py-2 focus:shadow"
+    >
+      {ui.skipToContent}
+    </a>
     <NavBar />
     <!-- Load-bearing disclaimer: always visible, above the fold. -->
-    <div class="bg-amber-50 border-b border-amber-200 text-amber-900 text-sm">
+    <div class="bg-amber-50 border-b border-amber-200 text-amber-900 text-sm" role="note">
       <p class="max-w-3xl mx-auto px-4 py-2">{ui.disclaimer}</p>
     </div>
-    <main class="flex-1 w-full max-w-3xl mx-auto px-4 py-8">
+    <main id="main" tabindex="-1" class="flex-1 w-full max-w-3xl mx-auto px-4 py-8">
       <slot />
     </main>
     <Footer />

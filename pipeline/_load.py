@@ -22,6 +22,7 @@ def load_kb() -> KnowledgeBase:
             "sources": _read("sources.json"),
             "cancer_sites": _read("cancer_sites.json"),
             "symptom_patterns": _read("symptom_patterns.json"),
+            "screening": _read("screening.json"),
             "dilo": _read("dilo.json"),
         }
     )

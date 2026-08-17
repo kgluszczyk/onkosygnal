@@ -2,6 +2,7 @@
 // Keep in sync with that file (it is the source of truth).
 
 export type Sex = 'all' | 'female' | 'male';
+export type Urgency = 'emergency' | 'urgent' | 'routine';
 export type SourceKind = 'guideline' | 'registry' | 'portal' | 'regulation' | 'other';
 
 export interface Source {
@@ -39,11 +40,24 @@ export interface SymptomPattern {
   pl_label: string;
   pl_terms: string[];
   red_flag: boolean;
+  urgency: Urgency;
   associated_site_ids: string[];
   duration_context_pl?: string | null;
   age_context_min?: number | null;
   guidance_pl: string;
   caveat_pl?: string | null;
+  source_id: string;
+}
+
+export interface ScreeningProgram {
+  id: string;
+  pl_name: string;
+  sex: Sex;
+  age_min: number;
+  age_max: number;
+  interval_years?: number | null;
+  pl_description: string;
+  booking_pl?: string | null;
   source_id: string;
 }
 

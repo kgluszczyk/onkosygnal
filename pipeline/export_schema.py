@@ -8,7 +8,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from pipeline.models import CancerSite, DiloInfo, Source, SymptomPattern
+from pipeline.models import CancerSite, DiloInfo, ScreeningProgram, Source, SymptomPattern
 
 ROOT = Path(__file__).resolve().parent.parent
 SCHEMA = ROOT / "schema"
@@ -17,6 +17,7 @@ EXPORTS = {
     "source.schema.json": Source,
     "cancer-site.schema.json": CancerSite,
     "symptom-pattern.schema.json": SymptomPattern,
+    "screening-program.schema.json": ScreeningProgram,
     "dilo.schema.json": DiloInfo,
 }
 

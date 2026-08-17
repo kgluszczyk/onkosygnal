@@ -1,0 +1,88 @@
+{
+  "$defs": {
+    "Sex": {
+      "enum": [
+        "all",
+        "female",
+        "male"
+      ],
+      "title": "Sex",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "A free (NFZ) Polish cancer screening programme, shown by sex/age eligibility.\nPurely informational sign-posting to established public programmes — not per-user risk.",
+  "properties": {
+    "id": {
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "title": "Id",
+      "type": "string"
+    },
+    "pl_name": {
+      "title": "Pl Name",
+      "type": "string"
+    },
+    "sex": {
+      "$ref": "#/$defs/Sex"
+    },
+    "age_min": {
+      "maximum": 120,
+      "minimum": 0,
+      "title": "Age Min",
+      "type": "integer"
+    },
+    "age_max": {
+      "maximum": 120,
+      "minimum": 0,
+      "title": "Age Max",
+      "type": "integer"
+    },
+    "interval_years": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Screening interval; None = one-off / see programme.",
+      "title": "Interval Years"
+    },
+    "pl_description": {
+      "title": "Pl Description",
+      "type": "string"
+    },
+    "booking_pl": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "How to enrol (e.g. no referral).",
+      "title": "Booking Pl"
+    },
+    "source_id": {
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "title": "Source Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "pl_name",
+    "sex",
+    "age_min",
+    "age_max",
+    "pl_description",
+    "source_id"
+  ],
+  "title": "ScreeningProgram",
+  "type": "object"
+}

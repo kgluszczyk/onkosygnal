@@ -17,7 +17,7 @@
     "kind": "registry",
     "url": "https://onkologia.org.pl/pl/raporty",
     "retrieved": "2026-08",
-    "note": "Population incidence/mortality. Published as PDF reports (no public API). Seed incidence figures in this KB are APPROXIMATE and must be verified against the specific report."
+    "note": "Population incidence/mortality (KRN). Per-cancer figures verified via the Narodowy Portal Onkologiczny 'Kompendium chorób nowotworowych' epidemiology pages (which cite KRN), retrieved 2026-08: lung ~21.5k (2022), breast >21k (current), colorectal 18.8k (2022), bladder ~7.2k and ovary ~3.6k (2013-2022 annual avg). Prostate/stomach/pancreas figures remain approximate (verified:false) — kompendium pages were unreachable; confirm against the KRN report PDF."
   },
   {
     "id": "nice-ng12",
@@ -28,6 +28,16 @@
     "url": "https://www.nice.org.uk/guidance/ng12",
     "retrieved": "2026-08",
     "note": "Structured red-flag / 2-week-wait referral criteria by cancer site. UK-derived — used here as the red-flag ROUTING backbone, NOT as Polish PPV data."
+  },
+  {
+    "id": "nfz-profilaktyka",
+    "title": "Programy profilaktyczne NFZ (mammografia, cytologia, kolonoskopia)",
+    "publisher": "Narodowy Fundusz Zdrowia",
+    "country": "PL",
+    "kind": "portal",
+    "url": "https://www.nfz.gov.pl/dla-pacjenta/programy-profilaktyczne/",
+    "retrieved": "2026-08",
+    "note": "Age ranges: mammografia 45-74 (co 2 lata, od XI 2023), cytologia 25-64 (co 3 lata), kolonoskopia 50-65. Verify against NFZ before launch — programme criteria change."
   },
   {
     "id": "mz-dilo",

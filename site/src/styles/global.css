@@ -21,3 +21,26 @@ body {
   outline: 2px solid var(--brand);
   outline-offset: 2px;
 }
+
+/* Print only the doctor hand-off summary (classic visibility trick). */
+@media print {
+  body {
+    visibility: hidden;
+    background: #fff;
+  }
+  .doctor-summary,
+  .doctor-summary * {
+    visibility: visible;
+  }
+  .doctor-summary {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border: none;
+    padding: 0;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

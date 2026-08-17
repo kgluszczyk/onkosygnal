@@ -1,0 +1,35 @@
+[
+  {
+    "id": "mammografia",
+    "pl_name": "Mammografia (profilaktyka raka piersi)",
+    "sex": "female",
+    "age_min": 45,
+    "age_max": 74,
+    "interval_years": 2,
+    "pl_description": "Bezpłatna mammografia w ramach programu NFZ dla kobiet w wieku 45–74 lat, co 2 lata.",
+    "booking_pl": "Nie jest wymagane skierowanie — można umówić się bezpośrednio.",
+    "source_id": "nfz-profilaktyka"
+  },
+  {
+    "id": "cytologia",
+    "pl_name": "Cytologia (profilaktyka raka szyjki macicy)",
+    "sex": "female",
+    "age_min": 25,
+    "age_max": 64,
+    "interval_years": 3,
+    "pl_description": "Bezpłatne badanie cytologiczne dla kobiet w wieku 25–64 lat, co 3 lata.",
+    "booking_pl": "Nie jest wymagane skierowanie.",
+    "source_id": "nfz-profilaktyka"
+  },
+  {
+    "id": "kolonoskopia",
+    "pl_name": "Kolonoskopia (profilaktyka raka jelita grubego)",
+    "sex": "all",
+    "age_min": 50,
+    "age_max": 65,
+    "interval_years": null,
+    "pl_description": "Bezpłatna kolonoskopia przesiewowa w ramach programu NFZ dla osób w wieku 50–65 lat.",
+    "booking_pl": "Sprawdź warunki programu — udział zależny od kryteriów NFZ.",
+    "source_id": "nfz-profilaktyka"
+  }
+]

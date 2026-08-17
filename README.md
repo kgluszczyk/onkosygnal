@@ -67,8 +67,31 @@ cd site
 npm install
 npm run dev        # http://localhost:4321  (predev syncs data from ../data)
 npm run test:unit  # vitest — matcher unit tests
+npm run test:e2e   # Playwright smoke tests (build first; uses port 4373)
+npm run check      # astro type-check
 npm run build
 ```
+
+## What v1 does
+
+- **Free-text symptom matching** (`site/src/lib/match.ts`): diacritic folding, light Polish
+  suffix stemming, prefix/typo tolerance, and negation handling ("nie mam..." won't match).
+  It is retrieval, not risk scoring — no probability is ever computed or shown.
+- **Optional sex/age context** (never stored, never used to hide guidance) that tailors the
+  incidence context and unlocks the screening panel.
+- **Urgency tiers** (emergency / urgent / routine) with a 112/SOR banner for emergencies.
+- **Free NFZ screening sign-posting** (mammografia / cytologia / kolonoskopia) by sex+age.
+- **Doctor hand-off printout** — a print-only summary the patient brings to their POZ visit.
+- **DiLO fast-track module** — the patient's rights + statutory deadlines + what to ask.
+
+CI (`.github/workflows/ci.yml`) runs the pipeline validation, a schema-drift check, and the
+site check/unit/build/e2e on every PR.
+
+## Before going live
+
+See [docs/LAUNCH-CHECKLIST.md](docs/LAUNCH-CHECKLIST.md) — the Tier-0 medical, regulatory,
+and legal blockers that are the operator's to resolve (clinician review, KRN verification,
+MDR opinion). The code is ready; those are not code tasks.
 
 ## Data provenance & verification gate
 
