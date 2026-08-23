@@ -25,11 +25,11 @@ function highlight(text: string): ReactNode[] {
   if (!text) return [];
   return text.split(/(\s+)/).map((part, i) =>
     /\s/.test(part) || part === '' ? (
-      <span key={i}>{part}</span>
+      <span key={`${i}:${part}`}>{part}</span>
     ) : isRecognized(part) ? (
-      <mark className="mark" key={i}>{part}</mark>
+      <mark className="mark" key={`${i}:${part}`}>{part}</mark>
     ) : (
-      <span key={i}>{part}</span>
+      <span key={`${i}:${part}`}>{part}</span>
     )
   );
 }
@@ -66,9 +66,11 @@ function ResultCard({ result, ctx }: { result: MatchResult; ctx: UserContext }) 
 
       {sites.length > 0 && (
         <div className="data-well" style={{ marginTop: 'var(--space-4)' }}>
-          <p className="eyebrow" style={{ marginBottom: 'var(--space-2)' }}>{t.howCommon}</p>
+          <p className="eyebrow" style={{ marginBottom: 'var(--space-1)' }}>{t.howCommon}</p>
+          {/* caption read FIRST, at body weight, so the "not your risk" framing precedes the numbers */}
+          <p style={{ color: 'var(--text-2)', fontSize: 'var(--step-0)', marginBottom: 'var(--space-3)' }}>{t.context}</p>
           <div className="stack">
-            {sites.map((c) => (
+            {sites.slice(0, 2).map((c) => (
               <div key={c.id}>
                 <span className="stat tnum">~{numberPl(c.incidence.annual_new_cases_pl)}</span>{' '}
                 <span className="stat__unit">{t.casesPerYear} · {c.pl_name}</span>
@@ -79,7 +81,9 @@ function ResultCard({ result, ctx }: { result: MatchResult; ctx: UserContext }) 
               </div>
             ))}
           </div>
-          <p className="context-note" style={{ marginTop: 'var(--space-3)' }}>{t.context}</p>
+          {sites.length > 2 && (
+            <p className="context-note" style={{ marginTop: 'var(--space-2)' }}>+ {sites.length - 2} inne powiązane nowotwory</p>
+          )}
         </div>
       )}
 
@@ -113,7 +117,7 @@ function DiloPanel() {
         <Lamp tier="uwaga" />
         <span className="eyebrow">{ui.sections.dilo.n} · {ui.dilo.heading}</span>
       </div>
-      <p className="pullquote" style={{ marginTop: 'var(--space-3)' }}>„{ui.dilo.quote}"</p>
+      <p className="pullquote" style={{ marginTop: 'var(--space-3)' }}>„{ui.dilo.quote}”</p>
       <p style={{ marginTop: 'var(--space-3)', color: 'var(--text-2)' }}>{dilo.intro_pl}</p>
 
       <div style={{ marginTop: 'var(--space-4)' }}>
@@ -220,32 +224,47 @@ export default function SymptomSearch() {
             <button type="submit" className="btn btn--accent" style={{ marginLeft: 'auto' }}>{t.button}</button>
           </div>
 
-          <p className="receipt" style={{ marginTop: 'var(--space-3)' }}>{t.privacy}</p>
+          <p style={{ marginTop: 'var(--space-3)', color: 'var(--text-2)', fontSize: 'var(--step--1)' }}>{t.atInput}</p>
+          <p className="receipt" style={{ marginTop: 'var(--space-2)' }}>{t.privacy}</p>
         </div>
       </form>
 
-      <div style={{ marginTop: 'var(--space-6)' }} role="region" aria-label={t.resultsHeading} aria-live="polite" className="stack">
-        {!submitted && <p style={{ color: 'var(--text-3)' }}>{t.empty}</p>}
-
-        {submitted && results.length === 0 && (
-          <p className="data-well" style={{ color: 'var(--text-2)' }}>{t.noMatch}</p>
+      <div style={{ marginTop: 'var(--space-6)' }} className="stack">
+        {/* Emergency alerts sit OUTSIDE the polite live region (their own role="alert" drives the
+            assertive announcement — no nested live regions). */}
+        {emergencies.length > 0 && (
+          <div className="stack">
+            {emergencies.map((r) => <EmergencyCard key={r.pattern.id} result={r} />)}
+          </div>
         )}
 
-        {emergencies.map((r) => <EmergencyCard key={r.pattern.id} result={r} />)}
-
-        {normal.length > 0 && (
-          <>
-            <div className="tier__head">
-              <span className="section__num">{ui.sections.signal.n}</span>
-              <h2 style={{ fontVariationSettings: 'var(--fraunces-title)', fontSize: 'var(--step-2)' }}>{t.resultsHeading}</h2>
+        <div role="region" aria-label={t.resultsHeading} aria-live="polite" className="stack">
+          {!submitted && (
+            <div className="resting">
+              <p className="eyebrow">{ui.sections.signal.n} · {ui.sections.signal.title}</p>
+              <p style={{ color: 'var(--text-2)', marginTop: 'var(--space-2)' }}>{t.restingHint}</p>
+              <div className="tick-rule" />
             </div>
-            {normal.map((r) => <ResultCard key={r.pattern.id} result={r} ctx={ctx} />)}
-          </>
-        )}
+          )}
 
-        {hasRedFlag && <DiloPanel />}
-        {results.length > 0 && <ScreeningPanel ctx={ctx} />}
-        {results.length > 0 && <DoctorSummary results={results} ctx={ctx} query={submitted} />}
+          {submitted && results.length === 0 && (
+            <p className="data-well" style={{ color: 'var(--text-2)' }}>{t.noMatch}</p>
+          )}
+
+          {normal.length > 0 && (
+            <>
+              <div className="tier__head">
+                <span className="section__num">{ui.sections.signal.n}</span>
+                <h2 className="section__title">{t.resultsHeading}</h2>
+              </div>
+              {normal.map((r) => <ResultCard key={r.pattern.id} result={r} ctx={ctx} />)}
+            </>
+          )}
+
+          {hasRedFlag && <DiloPanel />}
+          {results.length > 0 && <ScreeningPanel ctx={ctx} />}
+          {results.length > 0 && <DoctorSummary results={results} ctx={ctx} query={submitted} />}
+        </div>
       </div>
     </div>
   );

@@ -23,9 +23,8 @@
   --color-emergency: var(--emergency);
   --color-positive: var(--positive);
   --color-ring: var(--ring);
-  --font-display: var(--font-display);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
+  /* Fonts are consumed directly via var(--font-*) in CSS (no Tailwind font-* utilities used),
+     so they are intentionally NOT mapped here — a same-named @theme map would self-reference. */
 }
 
 /* ---------- base ---------- */

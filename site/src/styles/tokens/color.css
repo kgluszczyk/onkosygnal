@@ -13,7 +13,7 @@
   --text-2: oklch(0.44 0.018 74);       /* ~7:1 */
   --text-3: oklch(0.50 0.014 78);       /* captions ~5.6:1 — AA small */
   --border: oklch(0.90 0.012 84);       /* hairline */
-  --border-strong: oklch(0.74 0.018 80);/* 2px borders / inputs, >=3:1 UI */
+  --border-strong: oklch(0.63 0.020 80);/* 2px borders / inputs, >=3:1 UI */
   --accent: oklch(0.52 0.090 195);      /* patyna verdigris ~4.9:1, AA body */
   --accent-strong: oklch(0.44 0.100 197);/* links/hover/active + focus ring ~6.3:1 */
   --accent-contrast: oklch(0.99 0 0);   /* text on accent-strong fill */
@@ -27,6 +27,7 @@
   --positive-ink: oklch(0.43 0.090 155);/* text-safe green ~6:1 */
   --positive-bg: oklch(0.95 0.028 158); /* soft green panel */
   --ring: oklch(0.44 0.100 197);        /* = accent-strong; 2px + 2px offset */
+  --lamp-ink: #ffffff;                  /* glyph ink on lamp fills (light theme fills are dark) */
 
   --grain-opacity: 0.05;
   --shadow-card: 0 1px 2px oklch(0.24 0.02 72 / 0.05), 0 6px 20px oklch(0.24 0.02 72 / 0.06);
@@ -42,22 +43,23 @@
   --surface-2: oklch(0.265 0.011 74);
   --text-1: oklch(0.95 0.006 85);
   --text-2: oklch(0.78 0.008 82);
-  --text-3: oklch(0.63 0.010 80);
+  --text-3: oklch(0.67 0.010 80);
   --border: oklch(0.32 0.010 78);
-  --border-strong: oklch(0.42 0.012 78);
+  --border-strong: oklch(0.52 0.014 78);
   --accent: oklch(0.74 0.100 190);
   --accent-strong: oklch(0.82 0.110 188);
   --accent-contrast: oklch(0.20 0.010 75);
   --red-flag: oklch(0.80 0.130 78);
   --red-flag-ink: oklch(0.82 0.120 76);
   --red-flag-bg: oklch(0.30 0.045 72);
-  --emergency: oklch(0.66 0.190 28);
+  --emergency: oklch(0.54 0.200 28);
   --emergency-ink: oklch(0.78 0.160 30);
   --emergency-bg: oklch(0.30 0.055 30);
   --positive: oklch(0.74 0.110 155);
   --positive-ink: oklch(0.78 0.100 155);
   --positive-bg: oklch(0.30 0.050 158);
   --ring: oklch(0.82 0.110 188);
+  --lamp-ink: oklch(0.20 0.010 75);     /* dark graphite glyph on the lighter dark-theme lamp fills */
 
   --grain-opacity: 0.06;
   --shadow-card: 0 1px 2px oklch(0 0 0 / 0.30), 0 8px 24px oklch(0 0 0 / 0.36);
@@ -74,22 +76,23 @@
     --surface-2: oklch(0.265 0.011 74);
     --text-1: oklch(0.95 0.006 85);
     --text-2: oklch(0.78 0.008 82);
-    --text-3: oklch(0.63 0.010 80);
+    --text-3: oklch(0.67 0.010 80);
     --border: oklch(0.32 0.010 78);
-    --border-strong: oklch(0.42 0.012 78);
+    --border-strong: oklch(0.52 0.014 78);
     --accent: oklch(0.74 0.100 190);
     --accent-strong: oklch(0.82 0.110 188);
     --accent-contrast: oklch(0.20 0.010 75);
     --red-flag: oklch(0.80 0.130 78);
     --red-flag-ink: oklch(0.82 0.120 76);
     --red-flag-bg: oklch(0.30 0.045 72);
-    --emergency: oklch(0.66 0.190 28);
+    --emergency: oklch(0.54 0.200 28);
     --emergency-ink: oklch(0.78 0.160 30);
     --emergency-bg: oklch(0.30 0.055 30);
     --positive: oklch(0.74 0.110 155);
     --positive-ink: oklch(0.78 0.100 155);
     --positive-bg: oklch(0.30 0.050 158);
     --ring: oklch(0.82 0.110 188);
+  --lamp-ink: oklch(0.20 0.010 75);     /* dark graphite glyph on the lighter dark-theme lamp fills */
     --grain-opacity: 0.06;
     --shadow-card: 0 1px 2px oklch(0 0 0 / 0.30), 0 8px 24px oklch(0 0 0 / 0.36);
     --shadow-raise: 0 2px 8px oklch(0 0 0 / 0.40), 0 20px 50px oklch(0 0 0 / 0.46);

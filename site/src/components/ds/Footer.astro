@@ -1,13 +1,14 @@
 ---
 import { ui } from '../../i18n/ui';
 import { sources } from '../../lib/kb';
+import { nbsp } from '../../lib/format';
 const updated = sources.map((s) => s.retrieved).sort().at(-1);
 ---
 <footer>
   <div class="wrap colophon">
     <div class="stack">
       <p style="font-family:var(--font-display);font-variation-settings:var(--fraunces-title);font-size:var(--step-1);color:var(--text-1);max-width:46ch;">
-        {ui.closing}
+        {nbsp(ui.closing)}
       </p>
       <p style="color:var(--text-2);max-width:60ch;">{ui.footer}</p>
 

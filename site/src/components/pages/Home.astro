@@ -1,7 +1,9 @@
 ---
 import SymptomSearch from '../SymptomSearch.tsx';
+import Lamp from '../ds/Lamp.astro';
 import { ui } from '../../i18n/ui';
 import { cancerSites, dilo, screening, getSource } from '../../lib/kb';
+import { plYears, nbsp } from '../../lib/format';
 const S = ui.sections;
 const numberPl = (n: number) => n.toLocaleString('pl-PL');
 const topSites = [...cancerSites].sort((a, b) => b.incidence.annual_new_cases_pl - a.incidence.annual_new_cases_pl).slice(0, 4);
@@ -11,10 +13,10 @@ const diloSrc = getSource(dilo.source_id);
 <!-- HERO -->
 <section class="hero wrap" id="sygnal">
   <p class="eyebrow">{ui.hero.kicker}</p>
-  <h1 class="hero__title" style="margin-top:var(--space-3);max-width:18ch;">{ui.hero.title}</h1>
-  <p class="hero__lede" style="margin-top:var(--space-4);">{ui.hero.lede}</p>
+  <h1 class="hero__title" style="margin-top:var(--space-3);max-width:18ch;">{nbsp(ui.hero.title)}</h1>
+  <p class="hero__lede" style="margin-top:var(--space-4);">{nbsp(ui.hero.lede)}</p>
   <a class="emergency-inline" href="tel:112" style="margin-top:var(--space-4);">
-    <span class="lamp lamp--nagly" aria-hidden="true"></span>{ui.hero.emergency}
+    <Lamp tier="nagly" />{ui.hero.emergency}
   </a>
 
   <div class="card" style="margin-top:var(--space-6);">
@@ -22,12 +24,12 @@ const diloSrc = getSource(dilo.source_id);
   </div>
 </section>
 
-<hr class="hairline wrap" style="max-width:var(--wrap);" />
+<hr class="hairline hairline--draw wrap" style="max-width:var(--wrap);" />
 
 <!-- 02 KONTEKST, NIE WYROK -->
-<section class="section wrap" id="kontekst">
+<section class="section wrap reveal" id="kontekst">
   <div class="tier__head"><span class="section__num">{S.context.n}</span>
-    <h2 style="font-variation-settings:var(--fraunces-head);font-size:var(--step-2);">{S.context.title}</h2></div>
+    <h2 class="section__title">{S.context.title}</h2></div>
   <p style="margin-top:var(--space-3);color:var(--text-2);max-width:60ch;">
     Nowotwory są w Polsce częste — ale objaw to jeszcze nie choroba. Te liczby pokazują skalę
     w całej populacji, żeby dać kontekst, <strong>nie</strong> Twoje osobiste ryzyko.
@@ -46,12 +48,12 @@ const diloSrc = getSource(dilo.source_id);
   <p class="context-note" style="margin-top:var(--space-5);">{ui.search.context} Większość objawów nie oznacza raka — ale wczesna rozmowa z lekarzem pomaga.</p>
 </section>
 
-<hr class="hairline wrap" style="max-width:var(--wrap);" />
+<hr class="hairline hairline--draw wrap" style="max-width:var(--wrap);" />
 
 <!-- 03 OBJAWY ALARMOWE -->
-<section class="section wrap" id="objawy">
+<section class="section wrap reveal" id="objawy">
   <div class="tier__head"><span class="section__num">{S.signs.n}</span>
-    <h2 style="font-variation-settings:var(--fraunces-head);font-size:var(--step-2);">{S.signs.title}</h2></div>
+    <h2 class="section__title">{S.signs.title}</h2></div>
   <p style="margin-top:var(--space-3);color:var(--text-2);max-width:60ch;">
     Oficjalne objawy, na które warto zwrócić uwagę — pogrupowane wg nowotworu. Spokojnie: to lista
     do rozmowy z lekarzem, nie diagnoza.
@@ -59,7 +61,7 @@ const diloSrc = getSource(dilo.source_id);
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:var(--space-4);margin-top:var(--space-5);">
     {cancerSites.map((c) => (
       <div class="card">
-        <div class="tier__head"><span class="lamp lamp--uwaga" aria-hidden="true"></span>
+        <div class="tier__head"><Lamp tier="uwaga" />
           <span style="font-weight:600;color:var(--text-1);">{c.pl_name}</span></div>
         <ul class="stack" style="padding-left:1.1em;color:var(--text-2);margin-top:var(--space-3);font-size:var(--step--1);">
           {c.early_signs_pl.map((sgn) => <li>{sgn}</li>)}
@@ -70,13 +72,13 @@ const diloSrc = getSource(dilo.source_id);
   </div>
 </section>
 
-<hr class="hairline wrap" style="max-width:var(--wrap);" />
+<hr class="hairline hairline--draw wrap" style="max-width:var(--wrap);" />
 
 <!-- 04 MASZ PRAWO DO DiLO -->
-<section class="section wrap" id="prawa">
+<section class="section wrap reveal" id="prawa">
   <div class="tier__head"><span class="section__num">{S.dilo.n}</span>
-    <h2 style="font-variation-settings:var(--fraunces-head);font-size:var(--step-2);">{S.dilo.title}</h2></div>
-  <p class="pullquote" style="margin-top:var(--space-4);max-width:40ch;">„{ui.dilo.quote}"</p>
+    <h2 class="section__title">{S.dilo.title}</h2></div>
+  <p class="pullquote" style="margin-top:var(--space-4);max-width:40ch;">„{ui.dilo.quote}”</p>
   <p style="margin-top:var(--space-3);color:var(--text-2);max-width:60ch;">{dilo.intro_pl}</p>
 
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:var(--space-4);margin-top:var(--space-5);">
@@ -99,33 +101,33 @@ const diloSrc = getSource(dilo.source_id);
   </div>
 </section>
 
-<hr class="hairline wrap" style="max-width:var(--wrap);" />
+<hr class="hairline hairline--draw wrap" style="max-width:var(--wrap);" />
 
 <!-- 05 BEZPŁATNE BADANIA NFZ -->
-<section class="section wrap" id="badania-info">
+<section class="section wrap reveal" id="badania-info">
   <div class="tier__head"><span class="section__num">{S.screening.n}</span>
-    <h2 style="font-variation-settings:var(--fraunces-head);font-size:var(--step-2);">{S.screening.title}</h2></div>
+    <h2 class="section__title">{S.screening.title}</h2></div>
   <p style="margin-top:var(--space-3);color:var(--text-2);max-width:60ch;">{ui.screening.intro}</p>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:var(--space-4);margin-top:var(--space-5);">
     {screening.map((p) => (
       <div class="card">
-        <div class="tier__head"><span class="lamp lamp--profilaktyka" aria-hidden="true"></span>
+        <div class="tier__head"><Lamp tier="profilaktyka" />
           <span style="font-weight:600;color:var(--text-1);">{p.pl_name}</span></div>
         <p style="color:var(--text-2);font-size:var(--step--1);margin-top:var(--space-3);">{p.pl_description}</p>
         <p class="mono tnum" style="color:var(--text-2);font-size:var(--step--1);margin-top:var(--space-2);">
-          {ui.screening.ageRange} {p.age_min}–{p.age_max}{p.interval_years ? ` · ${ui.screening.every} ${p.interval_years} ${ui.screening.years}` : ''}
+          {ui.screening.ageRange} {p.age_min}–{p.age_max}{p.interval_years ? ` · ${ui.screening.every} ${p.interval_years} ${plYears(p.interval_years)}` : ''}
         </p>
       </div>
     ))}
   </div>
 </section>
 
-<hr class="hairline wrap" style="max-width:var(--wrap);" />
+<hr class="hairline hairline--draw wrap" style="max-width:var(--wrap);" />
 
 <!-- 06 WEŹ TO DO LEKARZA -->
-<section class="section wrap" id="dla-lekarza-info">
+<section class="section wrap reveal" id="dla-lekarza-info">
   <div class="tier__head"><span class="section__num">{S.doctor.n}</span>
-    <h2 style="font-variation-settings:var(--fraunces-head);font-size:var(--step-2);">{S.doctor.title}</h2></div>
+    <h2 class="section__title">{S.doctor.title}</h2></div>
   <p style="margin-top:var(--space-3);color:var(--text-2);max-width:60ch;">
     Po wpisaniu objawów możesz pobrać jednostronicowe <strong>podsumowanie do rozmowy z lekarzem</strong>:
     Twoje słowa, rozpoznane sygnały, sugerowane pytania i miejsce na notatki lekarza. Nic nie zapisujemy.
@@ -133,14 +135,14 @@ const diloSrc = getSource(dilo.source_id);
   <a class="btn btn--ghost" href="#sygnal" style="margin-top:var(--space-4);">Wpisz objawy powyżej</a>
 </section>
 
-<hr class="hairline wrap" style="max-width:var(--wrap);" />
+<hr class="hairline hairline--draw wrap" style="max-width:var(--wrap);" />
 
 <!-- 07 KIEDY NIE CZEKAĆ -->
-<section class="section wrap" id="nagly">
+<section class="section wrap reveal" id="nagly">
   <div class="tier__head"><span class="section__num">{S.emergency.n}</span>
-    <h2 style="font-variation-settings:var(--fraunces-head);font-size:var(--step-2);">{S.emergency.title}</h2></div>
+    <h2 class="section__title">{S.emergency.title}</h2></div>
   <div class="tier tier--nagly" style="margin-top:var(--space-4);max-width:44rem;">
-    <div class="tier__head"><span class="lamp lamp--nagly" aria-hidden="true"></span>
+    <div class="tier__head"><Lamp tier="nagly" />
       <span class="tier__label">{ui.search.emergency}</span></div>
     <p style="margin-top:var(--space-2);color:var(--text-1);">
       Masywne krwawienie, nagła silna duszność, utrata przytomności, silny nagły ból — nie czekaj na wizytę.

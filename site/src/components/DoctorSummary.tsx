@@ -1,5 +1,5 @@
 import type { MatchResult } from '../lib/match';
-import { getSource, type UserContext } from '../lib/kb';
+import { getSource, dilo, type UserContext } from '../lib/kb';
 import { ui } from '../i18n/ui';
 
 const d = ui.doctor;
@@ -55,6 +55,11 @@ export function DoctorSummary({ results, ctx, query }: { results: MatchResult[];
       </ul>
 
       {hasRedFlag && <p style={{ marginTop: 'var(--space-3)', color: 'var(--text-2)' }}>{d.diloNote}</p>}
+
+      <p className="eyebrow" style={{ marginTop: 'var(--space-4)', marginBottom: 'var(--space-2)' }}>{d.questions}</p>
+      <ul className="stack" style={{ paddingLeft: '1.2em', color: 'var(--text-1)' }}>
+        {dilo.what_to_ask_pl.map((q, i) => <li key={i}>{q}</li>)}
+      </ul>
 
       <p className="eyebrow" style={{ marginTop: 'var(--space-4)', marginBottom: 'var(--space-2)' }}>{d.notes}</p>
       <div style={{ borderTop: '1px solid var(--border)', height: '4.5rem' }} aria-hidden="true" />

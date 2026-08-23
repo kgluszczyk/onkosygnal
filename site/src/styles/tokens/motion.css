@@ -16,11 +16,12 @@
 @keyframes ink-underline { from { background-size: 0% 0.14em; } to { background-size: 100% 0.14em; } }
 @keyframes settle { from { transform: translateY(2px); } to { transform: none; } }
 
-/* Scroll-reveal helper: sections start hidden, reveal when .is-in is added by an IntersectionObserver. */
-.reveal { opacity: 0; transform: translateY(8px); }
-.reveal.is-in { animation: fade-rise var(--dur-3) var(--ease-out) forwards; }
+/* Scroll-reveal helper: only hide when JS is present (html.js), so no-JS always shows content.
+   An IntersectionObserver adds .is-in when the element scrolls into view. */
+html.js .reveal { opacity: 0; transform: translateY(8px); }
+html.js .reveal.is-in { animation: fade-rise var(--dur-3) var(--ease-out) forwards; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; scroll-behavior: auto !important; }
-  .reveal { opacity: 1; transform: none; }
+  html.js .reveal { opacity: 1 !important; transform: none !important; }
 }

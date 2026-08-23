@@ -1,5 +1,6 @@
 import { screeningForUser, type UserContext } from '../lib/kb';
 import { ui } from '../i18n/ui';
+import { plYears } from '../lib/format';
 import { Lamp, Receipt } from './ui';
 
 const s = ui.screening;
@@ -29,7 +30,7 @@ export function ScreeningPanel({ ctx }: { ctx: UserContext }) {
                   <p style={{ color: 'var(--text-2)', fontSize: 'var(--step--1)', marginTop: 2 }}>{p.pl_description}</p>
                   <p className="meta" style={{ marginTop: 4 }}>
                     {s.ageRange} {p.age_min}–{p.age_max}
-                    {p.interval_years ? <> · {s.every} {p.interval_years} {s.years}</> : null}
+                    {p.interval_years ? <> · {s.every} {p.interval_years} {plYears(p.interval_years)}</> : null}
                   </p>
                   {p.booking_pl && <p style={{ color: 'var(--text-3)', fontSize: 'var(--step--1)', marginTop: 2 }}>{p.booking_pl}</p>}
                   <div style={{ marginTop: 6 }}><Receipt sourceId={p.source_id} /></div>

@@ -12,6 +12,10 @@
     --shadow-card: none; --shadow-raise: none;
   }
   body { background: #fff; }
+  /* Print ONLY the doctor hand-off (visibility keeps layout; absolute avoids blank leading pages). */
+  body * { visibility: hidden; }
+  .doctor-summary, .doctor-summary * { visibility: visible; }
+  .doctor-summary { position: absolute; left: 0; top: 0; width: 100%; }
   .ambient, .banderola, .nav, .emergency-mini, .no-print, .theme-toggle { display: none !important; }
   .card, .tier, .data-well { box-shadow: none !important; border: 1px solid #999 !important; break-inside: avoid; }
   /* tiers keep their shape/weight cues without colour */

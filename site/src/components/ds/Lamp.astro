@@ -1,0 +1,17 @@
+---
+// Signal lamp for Astro contexts — mirrors the React <Lamp> in components/ui.tsx so the
+// octagon/check glyphs render identically everywhere (colour + SHAPE + a text label alongside).
+interface Props { tier: 'uwaga' | 'nagly' | 'profilaktyka'; }
+const { tier } = Astro.props;
+---
+{tier === 'nagly' && (
+  <span class="lamp lamp--nagly" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M12 6v8" stroke-linecap="round" /><circle cx="12" cy="18" r="0.6" fill="currentColor" stroke="none" /></svg>
+  </span>
+)}
+{tier === 'profilaktyka' && (
+  <span class="lamp lamp--profilaktyka" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M5 13l4 4 10-11" stroke-linecap="round" stroke-linejoin="round" /></svg>
+  </span>
+)}
+{tier === 'uwaga' && <span class="lamp lamp--uwaga" aria-hidden="true"></span>}

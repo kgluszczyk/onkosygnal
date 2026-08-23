@@ -30,7 +30,9 @@ export const ui = {
     label: 'Opisz, co czujesz — własnymi słowami',
     placeholder: 'np. „od trzech tygodni chrypka, która nie mija, i chudnę bez powodu”',
     button: 'Sprawdź sygnały',
+    atInput: 'To wiedza, nie diagnoza — pokazuje, które objawy warto skonsultować z lekarzem.',
     privacy: 'Nic nie wysyłamy — analiza działa w Twojej przeglądarce.',
+    restingHint: 'Wpisz objawy powyżej. Pokażemy spokojne wskazówki i Twoje prawa — bez oceny ryzyka.',
     recognized: 'Rozpoznane sygnały',
     empty: 'Wpisz objawy powyżej, aby zobaczyć spokojne wskazówki.',
     noMatch:
