@@ -69,6 +69,21 @@ describe('matchSymptoms', () => {
     expect(matchSymptoms('lubie grac w pilke nozna', patterns)).toEqual([]);
   });
 
+  it('does NOT false-match a generic word onto an unrelated phrase (ból w nodze !-> dysfagia)', () => {
+    const res = ids('bol w nodze');
+    expect(res).not.toContain('dysphagia');
+    // leg pain is not a cancer red flag in the KB -> no confident match
+    expect(res.length).toBe(0);
+  });
+
+  it('still matches a full generic-token phrase (dużo krwi -> emergency)', () => {
+    expect(ids('dużo krwi')).toContain('massive-bleeding');
+  });
+
+  it('still matches when a distinctive token is present (utrata masy ciała -> weight loss)', () => {
+    expect(ids('utrata masy ciała')).toContain('unexplained-weight-loss');
+  });
+
   it('ranks red flags ahead of non-red-flag on score ties', () => {
     const res = ids('zmeczenie i utrata masy ciala');
     if (res.includes('persistent-fatigue') && res.includes('unexplained-weight-loss')) {
