@@ -2,6 +2,7 @@
 import { ui } from '../../i18n/ui';
 import { sources } from '../../lib/kb';
 import { nbsp } from '../../lib/format';
+import { url } from '../../lib/url';
 const updated = sources.map((s) => s.retrieved).sort().at(-1);
 ---
 <footer>
@@ -25,9 +26,9 @@ const updated = sources.map((s) => s.retrieved).sort().at(-1);
         OnkoSygnał · narzędzie edukacyjne, nie diagnoza · ostatnia aktualizacja danych: {updated}
       </p>
       <p style="margin-top:var(--space-3);display:flex;gap:var(--space-4);flex-wrap:wrap;">
-        <a class="nav__link" href="/o-projekcie">O projekcie</a>
-        <a class="nav__link" href="/prywatnosc">Prywatność</a>
-        <a class="nav__link" href="/regulamin">Regulamin</a>
+        <a class="nav__link" href={url('o-projekcie/')}>O projekcie</a>
+        <a class="nav__link" href={url('prywatnosc/')}>Prywatność</a>
+        <a class="nav__link" href={url('regulamin/')}>Regulamin</a>
       </p>
     </div>
   </div>

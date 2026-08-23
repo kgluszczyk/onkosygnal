@@ -12,6 +12,7 @@ import '../styles/global.css';
 import NavBar from '../components/ds/NavBar.astro';
 import Footer from '../components/ds/Footer.astro';
 import { ui } from '../i18n/ui';
+import { url } from '../lib/url';
 
 interface Props {
   title?: string;
@@ -32,7 +33,7 @@ const cfBeacon = import.meta.env.PUBLIC_CF_BEACON;
     <meta name="description" content={desc} />
     <meta name="theme-color" content="#F5F1E8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#201D17" media="(prefers-color-scheme: dark)" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={url('favicon.svg')} />
     {/* No-flash theme: apply saved/system theme before first paint. */}
     <script is:inline>
       (function () {

@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { url } from '../lib/url';
 ---
 <Base title="Regulamin">
   <section class="section wrap">
@@ -23,7 +24,7 @@ import Base from '../layouts/Base.astro';
         nagłym zadzwoń pod 112.
       </p>
       <h2>Źródła</h2>
-      <p>Treści opierają się na publicznych źródłach wskazanych na stronie <a href="/o-projekcie">O projekcie</a>.</p>
+      <p>Treści opierają się na publicznych źródłach wskazanych na stronie <a href={url('o-projekcie/')}>O projekcie</a>.</p>
       <p class="receipt" style="display:block;margin-top:var(--space-6);">Ostatnia aktualizacja: [do uzupełnienia].</p>
     </article>
   </section>

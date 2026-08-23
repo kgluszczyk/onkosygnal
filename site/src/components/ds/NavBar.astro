@@ -1,16 +1,17 @@
 ---
 import { ui } from '../../i18n/ui';
+import { url } from '../../lib/url';
 import ThemeToggle from '../ThemeToggle.tsx';
 ---
 <header>
   <nav class="wrap nav" aria-label="Główna nawigacja">
-    <a href="/" class="wordmark" aria-label={`${ui.siteName} — strona główna`}>OnkoSygnał</a>
+    <a href={url('')} class="wordmark" aria-label={`${ui.siteName} — strona główna`}>OnkoSygnał</a>
     <div class="nav__links">
-      <a class="nav__link" href="/#sygnal">{ui.nav.home}</a>
-      <a class="nav__link" href="/#objawy">{ui.nav.signs}</a>
-      <a class="nav__link" href="/#prawa">{ui.nav.rights}</a>
-      <a class="nav__link" href="/#badania">{ui.nav.screening}</a>
-      <a class="nav__link nav__link--about" href="/o-projekcie">{ui.nav.about}</a>
+      <a class="nav__link" href={url('#sygnal')}>{ui.nav.home}</a>
+      <a class="nav__link" href={url('#objawy')}>{ui.nav.signs}</a>
+      <a class="nav__link" href={url('#prawa')}>{ui.nav.rights}</a>
+      <a class="nav__link" href={url('#badania')}>{ui.nav.screening}</a>
+      <a class="nav__link nav__link--about" href={url('o-projekcie/')}>{ui.nav.about}</a>
       <ThemeToggle client:load />
     </div>
   </nav>
