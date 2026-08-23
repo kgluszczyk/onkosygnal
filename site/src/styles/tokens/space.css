@@ -1,0 +1,21 @@
+/* Spacing, radius, layout rhythm. Small consistent radii (buildable instrument). */
+:root {
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-section: clamp(3.5rem, 8vw, 7rem); /* between scroll-story beats */
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+
+  --wrap: 68rem;      /* page max width */
+  --wrap-narrow: 42rem;
+}

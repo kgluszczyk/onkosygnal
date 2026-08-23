@@ -1,14 +1,17 @@
 ---
 import { ui } from '../../i18n/ui';
+import ThemeToggle from '../ThemeToggle.tsx';
 ---
-<header class="bg-white border-b border-slate-200">
-  <nav aria-label="Główna nawigacja" class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
-    <a href="/" class="font-semibold text-lg" style="color: var(--brand-ink)">
-      {ui.siteName}
-    </a>
-    <div class="flex gap-4 text-sm text-slate-600">
-      <a href="/" class="hover:text-slate-900">{ui.nav.home}</a>
-      <a href="/o-projekcie" class="hover:text-slate-900">{ui.nav.about}</a>
+<header>
+  <nav class="wrap nav" aria-label="Główna nawigacja">
+    <a href="/" class="wordmark" aria-label={`${ui.siteName} — strona główna`}>OnkoSygnał</a>
+    <div class="nav__links">
+      <a class="nav__link" href="/#sygnal">{ui.nav.home}</a>
+      <a class="nav__link" href="/#objawy">{ui.nav.signs}</a>
+      <a class="nav__link" href="/#prawa">{ui.nav.rights}</a>
+      <a class="nav__link" href="/#badania">{ui.nav.screening}</a>
+      <a class="nav__link nav__link--about" href="/o-projekcie">{ui.nav.about}</a>
+      <ThemeToggle client:load />
     </div>
   </nav>
 </header>

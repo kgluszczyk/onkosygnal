@@ -1,0 +1,25 @@
+/* Print — the A4 doctor hand-off. Strip colour/grain/contour to ink-on-white; re-encode
+   tiers by LABEL + rule-weight + lamp SHAPE (never colour). */
+@media print {
+  :root {
+    --bg: #fff; --surface: #fff; --surface-2: #fff;
+    --text-1: #000; --text-2: #1a1a1a; --text-3: #333;
+    --border: #999; --border-strong: #333;
+    --accent: #000; --accent-strong: #000; --accent-contrast: #fff;
+    --red-flag: #000; --red-flag-ink: #000; --red-flag-bg: #fff;
+    --emergency: #000; --emergency-ink: #000; --emergency-bg: #fff;
+    --positive: #000; --positive-ink: #000; --positive-bg: #fff;
+    --shadow-card: none; --shadow-raise: none;
+  }
+  body { background: #fff; }
+  .ambient, .banderola, .nav, .emergency-mini, .no-print, .theme-toggle { display: none !important; }
+  .card, .tier, .data-well { box-shadow: none !important; border: 1px solid #999 !important; break-inside: avoid; }
+  /* tiers keep their shape/weight cues without colour */
+  .tier--nagly { border: 2px solid #000 !important; }
+  .tier--uwaga { border-left: 3px solid #000 !important; }
+  .lamp { background: #fff !important; color: #000 !important; border: 1.5px solid #000 !important; }
+  .lamp--nagly { border-radius: 0; } /* octagon clip retained via clip-path */
+  a { color: #000 !important; text-decoration: underline; }
+  .receipt, .receipt a { color: #333 !important; }
+  @page { margin: 18mm; }
+}

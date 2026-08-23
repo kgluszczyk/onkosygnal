@@ -1,30 +1,153 @@
 ---
 import SymptomSearch from '../SymptomSearch.tsx';
 import { ui } from '../../i18n/ui';
+import { cancerSites, dilo, screening, getSource } from '../../lib/kb';
+const S = ui.sections;
+const numberPl = (n: number) => n.toLocaleString('pl-PL');
+const topSites = [...cancerSites].sort((a, b) => b.incidence.annual_new_cases_pl - a.incidence.annual_new_cases_pl).slice(0, 4);
+const diloSrc = getSource(dilo.source_id);
 ---
-<section>
-  <h1 class="text-2xl font-bold text-slate-900">{ui.tagline}</h1>
-  <p class="mt-2 text-slate-600">
-    Opisz objawy własnymi słowami. Pokażemy, które z nich onkolodzy uznają za warte
-    konsultacji, jak częsty jest dany nowotwór w Polsce oraz jak rozmawiać z lekarzem POZ —
-    łącznie z prawem do szybkiej ścieżki (karta DiLO).
-  </p>
 
-  <div class="mt-6">
+<!-- HERO -->
+<section class="hero wrap" id="sygnal">
+  <p class="eyebrow">{ui.hero.kicker}</p>
+  <h1 class="hero__title" style="margin-top:var(--space-3);max-width:18ch;">{ui.hero.title}</h1>
+  <p class="hero__lede" style="margin-top:var(--space-4);">{ui.hero.lede}</p>
+  <a class="emergency-inline" href="tel:112" style="margin-top:var(--space-4);">
+    <span class="lamp lamp--nagly" aria-hidden="true"></span>{ui.hero.emergency}
+  </a>
+
+  <div class="card" style="margin-top:var(--space-6);">
     <SymptomSearch client:load />
   </div>
-
-  <section class="mt-10 border-t border-slate-200 pt-6">
-    <h2 class="font-semibold text-slate-900">Jak to działa</h2>
-    <ol class="mt-2 list-decimal list-inside text-sm text-slate-600 space-y-1">
-      <li>Dopasowujemy Twój opis do rozpoznanych objawów (bez oceny ryzyka).</li>
-      <li>Pokazujemy oficjalne wskazówki i kontekst epidemiologiczny (dane KRN).</li>
-      <li>Kierujemy do lekarza POZ i wyjaśniamy Twoje prawa jako pacjenta.</li>
-    </ol>
-    <p class="mt-3 text-sm text-slate-500">
-      Nie podajemy „procentu ryzyka raka” — takie liczby dla pojedynczych objawów są
-      niskie i mylące, a rzetelne oszacowanie wymaga badań lekarskich.
-      <a href="/o-projekcie" class="underline">Dlaczego?</a>
-    </p>
-  </section>
 </section>
+
+<hr class="hairline wrap" style="max-width:var(--wrap);" />
+
+<!-- 02 KONTEKST, NIE WYROK -->
+<section class="section wrap" id="kontekst">
+  <div class="tier__head"><span class="section__num">{S.context.n}</span>
+    <h2 style="font-variation-settings:var(--fraunces-head);font-size:var(--step-2);">{S.context.title}</h2></div>
+  <p style="margin-top:var(--space-3);color:var(--text-2);max-width:60ch;">
+    Nowotwory są w Polsce częste — ale objaw to jeszcze nie choroba. Te liczby pokazują skalę
+    w całej populacji, żeby dać kontekst, <strong>nie</strong> Twoje osobiste ryzyko.
+  </p>
+  <div class="tick-rule" style="margin-top:var(--space-5);"></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:var(--space-5);margin-top:var(--space-5);">
+    {topSites.map((c) => (
+      <div>
+        <div class="stat tnum">~{numberPl(c.incidence.annual_new_cases_pl)}</div>
+        <div class="stat__unit">{ui.search.casesPerYear}</div>
+        <p style="color:var(--text-1);margin-top:var(--space-2);">{c.pl_name}</p>
+        <p class="receipt" style="margin-top:2px;">źródło: {c.incidence.verified ? 'KRN' : 'KRN (szac.)'} · {c.incidence.as_of_year}</p>
+      </div>
+    ))}
+  </div>
+  <p class="context-note" style="margin-top:var(--space-5);">{ui.search.context} Większość objawów nie oznacza raka — ale wczesna rozmowa z lekarzem pomaga.</p>
+</section>
+
+<hr class="hairline wrap" style="max-width:var(--wrap);" />
+
+<!-- 03 OBJAWY ALARMOWE -->
+<section class="section wrap" id="objawy">
+  <div class="tier__head"><span class="section__num">{S.signs.n}</span>
+    <h2 style="font-variation-settings:var(--fraunces-head);font-size:var(--step-2);">{S.signs.title}</h2></div>
+  <p style="margin-top:var(--space-3);color:var(--text-2);max-width:60ch;">
+    Oficjalne objawy, na które warto zwrócić uwagę — pogrupowane wg nowotworu. Spokojnie: to lista
+    do rozmowy z lekarzem, nie diagnoza.
+  </p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:var(--space-4);margin-top:var(--space-5);">
+    {cancerSites.map((c) => (
+      <div class="card">
+        <div class="tier__head"><span class="lamp lamp--uwaga" aria-hidden="true"></span>
+          <span style="font-weight:600;color:var(--text-1);">{c.pl_name}</span></div>
+        <ul class="stack" style="padding-left:1.1em;color:var(--text-2);margin-top:var(--space-3);font-size:var(--step--1);">
+          {c.early_signs_pl.map((sgn) => <li>{sgn}</li>)}
+        </ul>
+        <div style="margin-top:var(--space-3);"><span class="receipt">źródło: {getSource(c.early_signs_source_id)?.publisher}</span></div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<hr class="hairline wrap" style="max-width:var(--wrap);" />
+
+<!-- 04 MASZ PRAWO DO DiLO -->
+<section class="section wrap" id="prawa">
+  <div class="tier__head"><span class="section__num">{S.dilo.n}</span>
+    <h2 style="font-variation-settings:var(--fraunces-head);font-size:var(--step-2);">{S.dilo.title}</h2></div>
+  <p class="pullquote" style="margin-top:var(--space-4);max-width:40ch;">„{ui.dilo.quote}"</p>
+  <p style="margin-top:var(--space-3);color:var(--text-2);max-width:60ch;">{dilo.intro_pl}</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:var(--space-4);margin-top:var(--space-5);">
+    {dilo.deadlines.map((d) => (
+      <div class="data-well">
+        <div class="dilo__day">{d.days}<small>{ui.dilo.days}</small></div>
+        <p style="color:var(--text-2);font-size:var(--step--1);margin-top:var(--space-2);">{d.stage_pl}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="card" style="margin-top:var(--space-5);">
+    <p class="eyebrow" style="margin-bottom:var(--space-2);">{ui.dilo.whatToAsk}</p>
+    <div class="dilo__script stack">
+      {dilo.what_to_ask_pl.map((q) => <p>• {q}</p>)}
+    </div>
+    <div style="margin-top:var(--space-4);">
+      <span class="receipt">źródło: <a href={diloSrc?.url} target="_blank" rel="noopener noreferrer">{diloSrc?.publisher}</a> · akt. {diloSrc?.retrieved}</span>
+    </div>
+  </div>
+</section>
+
+<hr class="hairline wrap" style="max-width:var(--wrap);" />
+
+<!-- 05 BEZPŁATNE BADANIA NFZ -->
+<section class="section wrap" id="badania-info">
+  <div class="tier__head"><span class="section__num">{S.screening.n}</span>
+    <h2 style="font-variation-settings:var(--fraunces-head);font-size:var(--step-2);">{S.screening.title}</h2></div>
+  <p style="margin-top:var(--space-3);color:var(--text-2);max-width:60ch;">{ui.screening.intro}</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:var(--space-4);margin-top:var(--space-5);">
+    {screening.map((p) => (
+      <div class="card">
+        <div class="tier__head"><span class="lamp lamp--profilaktyka" aria-hidden="true"></span>
+          <span style="font-weight:600;color:var(--text-1);">{p.pl_name}</span></div>
+        <p style="color:var(--text-2);font-size:var(--step--1);margin-top:var(--space-3);">{p.pl_description}</p>
+        <p class="mono tnum" style="color:var(--text-2);font-size:var(--step--1);margin-top:var(--space-2);">
+          {ui.screening.ageRange} {p.age_min}–{p.age_max}{p.interval_years ? ` · ${ui.screening.every} ${p.interval_years} ${ui.screening.years}` : ''}
+        </p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<hr class="hairline wrap" style="max-width:var(--wrap);" />
+
+<!-- 06 WEŹ TO DO LEKARZA -->
+<section class="section wrap" id="dla-lekarza-info">
+  <div class="tier__head"><span class="section__num">{S.doctor.n}</span>
+    <h2 style="font-variation-settings:var(--fraunces-head);font-size:var(--step-2);">{S.doctor.title}</h2></div>
+  <p style="margin-top:var(--space-3);color:var(--text-2);max-width:60ch;">
+    Po wpisaniu objawów możesz pobrać jednostronicowe <strong>podsumowanie do rozmowy z lekarzem</strong>:
+    Twoje słowa, rozpoznane sygnały, sugerowane pytania i miejsce na notatki lekarza. Nic nie zapisujemy.
+  </p>
+  <a class="btn btn--ghost" href="#sygnal" style="margin-top:var(--space-4);">Wpisz objawy powyżej</a>
+</section>
+
+<hr class="hairline wrap" style="max-width:var(--wrap);" />
+
+<!-- 07 KIEDY NIE CZEKAĆ -->
+<section class="section wrap" id="nagly">
+  <div class="tier__head"><span class="section__num">{S.emergency.n}</span>
+    <h2 style="font-variation-settings:var(--fraunces-head);font-size:var(--step-2);">{S.emergency.title}</h2></div>
+  <div class="tier tier--nagly" style="margin-top:var(--space-4);max-width:44rem;">
+    <div class="tier__head"><span class="lamp lamp--nagly" aria-hidden="true"></span>
+      <span class="tier__label">{ui.search.emergency}</span></div>
+    <p style="margin-top:var(--space-2);color:var(--text-1);">
+      Masywne krwawienie, nagła silna duszność, utrata przytomności, silny nagły ból — nie czekaj na wizytę.
+    </p>
+    <a class="btn btn--emergency" href="tel:112" style="margin-top:var(--space-3);">Zadzwoń 112</a>
+  </div>
+</section>
+
+<!-- persistent emergency affordance -->
+<a class="btn btn--emergency emergency-mini no-print" href="tel:112" aria-label="Nagły przypadek — zadzwoń 112">112</a>

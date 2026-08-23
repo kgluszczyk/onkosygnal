@@ -1,0 +1,26 @@
+/* Motion — calm, purposeful, always prefers-reduced-motion safe. */
+:root {
+  --dur-1: 120ms;  /* taps, focus */
+  --dur-2: 200ms;  /* lamps, hovers */
+  --dur-3: 320ms;  /* section reveals, hairline draws */
+  --dur-4: 560ms;  /* ambient / hero */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-signal: cubic-bezier(0.16, 1, 0.3, 1); /* lamp settle */
+  --ease-linear: linear;
+}
+
+@keyframes fade-rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes hairline-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes lamp-in { from { opacity: 0; transform: scale(0.85); } to { opacity: 1; transform: scale(1); } }
+@keyframes ink-underline { from { background-size: 0% 0.14em; } to { background-size: 100% 0.14em; } }
+@keyframes settle { from { transform: translateY(2px); } to { transform: none; } }
+
+/* Scroll-reveal helper: sections start hidden, reveal when .is-in is added by an IntersectionObserver. */
+.reveal { opacity: 0; transform: translateY(8px); }
+.reveal.is-in { animation: fade-rise var(--dur-3) var(--ease-out) forwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1; transform: none; }
+}

@@ -3,50 +3,48 @@ import Base from '../layouts/Base.astro';
 import { sources } from '../lib/kb';
 ---
 <Base title="O projekcie">
-  <article class="prose-sm max-w-none">
-    <h1 class="text-2xl font-bold text-slate-900">O projekcie i metodyce</h1>
+  <section class="section wrap">
+    <p class="eyebrow">O projekcie · metodyka</p>
+    <article class="prose" style="margin-top:var(--space-3);">
+      <h1>O projekcie i metodyce</h1>
+      <p>
+        OnkoSygnał to narzędzie <strong>edukacyjne</strong>. Pomaga rozpoznać, które objawy warto
+        skonsultować z lekarzem POZ, i wyjaśnia prawa pacjenta onkologicznego w Polsce (karta DiLO).
+        <strong>Nie stawia diagnozy i nie oblicza ryzyka raka.</strong>
+      </p>
 
-    <p class="mt-3 text-slate-700">
-      OnkoSygnał to narzędzie <strong>edukacyjne</strong>. Pomaga rozpoznać, które objawy
-      warto skonsultować z lekarzem POZ, i wyjaśnia prawa pacjenta onkologicznego w Polsce
-      (karta DiLO). <strong>Nie stawia diagnozy i nie oblicza ryzyka raka.</strong>
-    </p>
-
-    <h2 class="mt-6 font-semibold text-slate-900">Dlaczego nie podajemy „procentu ryzyka”</h2>
-    <ul class="mt-2 list-disc list-inside text-sm text-slate-700 space-y-2">
-      <li>
-        <strong>Brak polskich danych.</strong> Wartości predykcyjne objawów dla nowotworów
-        pochodzą z badań brytyjskich (NICE NG12, badania Hamiltona). Polski KRN publikuje
-        <em>zachorowalność</em>, a nie predykcyjność objawów. Osobisty „procent” byłby więc
-        przeniesioną liczbą brytyjską — bez podstaw dla polskiej populacji.
-      </li>
-      <li>
-        <strong>Psychologia.</strong> Dla pojedynczych objawów wartości te są niskie
-        (rzędu 2–3%) i jednocześnie niepokoją i fałszywie uspokajają. Taką liczbę powinien
-        interpretować lekarz, nie aplikacja.
-      </li>
-      <li>
-        <strong>Regulacje.</strong> Oprogramowanie, które na podstawie objawów podaje
-        diagnozę lub ryzyko, jest w UE (MDR) traktowane jako wyrób medyczny. Sygnalizowanie
-        „warto to skonsultować” pozostaje po bezpiecznej stronie tej granicy.
-      </li>
-    </ul>
-
-    <h2 class="mt-6 font-semibold text-slate-900">Źródła</h2>
-    <ul class="mt-2 space-y-2 text-sm">
-      {sources.map((s) => (
+      <h2>Dlaczego nie podajemy „procentu ryzyka”</h2>
+      <ul>
         <li>
-          <a href={s.url} target="_blank" rel="noopener noreferrer" class="underline text-slate-700">
-            {s.title}
-          </a>
-          <span class="text-slate-400"> — {s.publisher} ({s.country})</span>
+          <strong>Brak polskich danych.</strong> Wartości predykcyjne objawów pochodzą z badań
+          brytyjskich (NICE NG12, badania Hamiltona). Polski KRN publikuje <em>zachorowalność</em>,
+          a nie predykcyjność objawów. Osobisty „procent” byłby przeniesioną liczbą brytyjską.
         </li>
-      ))}
-    </ul>
+        <li>
+          <strong>Psychologia.</strong> Dla pojedynczych objawów wartości te są niskie (rzędu 2–3%)
+          i jednocześnie niepokoją i fałszywie uspokajają. Taką liczbę powinien interpretować lekarz.
+        </li>
+        <li>
+          <strong>Regulacje.</strong> Oprogramowanie, które na podstawie objawów podaje diagnozę lub
+          ryzyko, jest w UE (MDR) traktowane jako wyrób medyczny. Sygnalizowanie „warto to
+          skonsultować” pozostaje po bezpiecznej stronie tej granicy.
+        </li>
+      </ul>
 
-    <p class="mt-6 text-xs text-slate-400">
-      Dane o zachorowalności są szacunkowe i wymagają weryfikacji względem najnowszego
-      raportu KRN. Projekt nie jest przeznaczony do użytku klinicznego.
-    </p>
-  </article>
+      <h2>Źródła</h2>
+      <ul>
+        {sources.map((s) => (
+          <li>
+            <a href={s.url} target="_blank" rel="noopener noreferrer">{s.title}</a>
+            <span class="receipt"> — {s.publisher} · {s.country} · akt. {s.retrieved}</span>
+          </li>
+        ))}
+      </ul>
+
+      <p class="receipt" style="display:block;margin-top:var(--space-6);">
+        Dane o zachorowalności częściowo szacunkowe — do weryfikacji względem raportu KRN.
+        Projekt nie jest przeznaczony do użytku klinicznego.
+      </p>
+    </article>
+  </section>
 </Base>
