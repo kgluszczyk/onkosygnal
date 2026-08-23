@@ -104,6 +104,8 @@ export interface MatchResult {
 }
 
 const DEFAULT_THRESHOLD = 0.5;
+const DISTINCTIVE_LEN = 5; // a matched token must be this long (or the whole phrase must match)
+                           // for the term to count — blocks generic short words like "ból".
 
 /** Content query tokens that are NOT within the scope of a negation cue. */
 function affirmedQueryTokens(query: string): string[] {
@@ -148,12 +150,20 @@ export function matchSymptoms(
       const tTokens = [...new Set(tokenize(term))];
       if (tTokens.length === 0) continue;
       const matched: string[] = [];
+      let distinctive = false; // did a content-bearing (>=5 char) token match?
       for (const tt of tTokens) {
         const hit = qTokens.find((qt) => tokensMatch(qt, tt));
-        if (hit) matched.push(hit);
+        if (hit) {
+          matched.push(hit);
+          if (tt.length >= DISTINCTIVE_LEN) distinctive = true;
+        }
       }
       const score = matched.length / tTokens.length;
-      if (score > best) {
+      // A term only qualifies if it matched a distinctive token OR the whole phrase matched —
+      // so a generic word alone (e.g. "ból") can't drag in an unrelated phrase like
+      // "ból przy przełykaniu" (dysphagia) for an input like "ból w nodze".
+      const qualifies = score >= threshold && (distinctive || score === 1);
+      if (qualifies && score > best) {
         best = score;
         bestMatched = matched;
       }
