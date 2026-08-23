@@ -1,13 +1,35 @@
 ---
 import { ui } from '../../i18n/ui';
+import { sources } from '../../lib/kb';
+import { nbsp } from '../../lib/format';
+import { url } from '../../lib/url';
+const updated = sources.map((s) => s.retrieved).sort().at(-1);
 ---
-<footer class="bg-white border-t border-slate-200 mt-12">
-  <div class="max-w-3xl mx-auto px-4 py-6 text-xs text-slate-500">
-    <p>{ui.footer}</p>
-    <p class="mt-2 flex flex-wrap gap-x-4 gap-y-1">
-      <a href="/o-projekcie" class="underline hover:text-slate-700">Metodyka i źródła</a>
-      <a href="/prywatnosc" class="underline hover:text-slate-700">Prywatność</a>
-      <a href="/regulamin" class="underline hover:text-slate-700">Regulamin</a>
-    </p>
+<footer>
+  <div class="wrap colophon">
+    <div class="stack">
+      <p style="font-family:var(--font-display);font-variation-settings:var(--fraunces-title);font-size:var(--step-1);color:var(--text-1);max-width:46ch;">
+        {nbsp(ui.closing)}
+      </p>
+      <p style="color:var(--text-2);max-width:60ch;">{ui.footer}</p>
+
+      <div style="margin-top:var(--space-4);">
+        <p class="eyebrow" style="margin-bottom:var(--space-2);">Źródła</p>
+        {sources.map((s) => (
+          <span class="receipt" style="display:block;margin-top:2px;">
+            źródło: <a href={s.url} target="_blank" rel="noopener noreferrer">{s.title}</a> · {s.country} · akt. {s.retrieved}
+          </span>
+        ))}
+      </div>
+
+      <p class="receipt" style="display:block;margin-top:var(--space-4);">
+        OnkoSygnał · narzędzie edukacyjne, nie diagnoza · ostatnia aktualizacja danych: {updated}
+      </p>
+      <p style="margin-top:var(--space-3);display:flex;gap:var(--space-4);flex-wrap:wrap;">
+        <a class="nav__link" href={url('o-projekcie/')}>O projekcie</a>
+        <a class="nav__link" href={url('prywatnosc/')}>Prywatność</a>
+        <a class="nav__link" href={url('regulamin/')}>Regulamin</a>
+      </p>
+    </div>
   </div>
 </footer>

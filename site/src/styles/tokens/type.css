@@ -1,0 +1,34 @@
+/* OnkoSygnał type tokens — Fraunces (display, low-WONK sober), Fira Sans (humanist body,
+   flawless Polish diacritics), IBM Plex Mono (data/receipts/eyebrows, tabular figures).
+   Fonts self-hosted via @fontsource (latin-ext), imported in Base.astro. */
+:root {
+  --font-display: 'Fraunces Variable', 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Fira Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Fraunces axis presets — sober, characterful, never whimsical */
+  --fraunces-hero: 'opsz' 120, 'wght' 480, 'SOFT' 40, 'WONK' 0;
+  --fraunces-head: 'opsz' 60, 'wght' 500, 'SOFT' 40, 'WONK' 0;
+  --fraunces-title: 'opsz' 28, 'wght' 540, 'SOFT' 30, 'WONK' 0;
+
+  /* fluid clamp() scale — base 17px, ~1.2 mobile -> ~1.25 desktop */
+  --step--2: clamp(0.75rem, 0.73rem + 0.10vw, 0.8125rem);   /* micro labels / receipts */
+  --step--1: clamp(0.875rem, 0.85rem + 0.14vw, 0.9375rem);  /* captions / chips */
+  --step-0:  clamp(1.0625rem, 1.02rem + 0.22vw, 1.1875rem); /* body */
+  --step-1:  clamp(1.28rem, 1.19rem + 0.42vw, 1.5rem);      /* h3 */
+  --step-2:  clamp(1.54rem, 1.38rem + 0.75vw, 2rem);        /* h2 */
+  --step-3:  clamp(1.85rem, 1.60rem + 1.20vw, 2.66rem);     /* h1 */
+  --step-4:  clamp(2.22rem, 1.85rem + 1.85vw, 3.55rem);
+  --step-5:  clamp(2.66rem, 2.05rem + 3.00vw, 4.5rem);      /* hero */
+  --step-6:  clamp(3.2rem, 2.2rem + 4.6vw, 6rem);           /* mega */
+  --step-stat: clamp(2.2rem, 1.7rem + 2.4vw, 3.4rem);       /* big incidence figure */
+
+  --leading-body: 1.6;   /* room for ą/ę ogonki + ł */
+  --leading-tight: 1.15;
+  --leading-hero: 1.05;
+  --tracking-caps: 0.08em;
+  --tracking-hero: -0.02em;
+  --measure: 66ch;
+
+  --tnum: 'tnum' 1, 'lnum' 1;
+}
