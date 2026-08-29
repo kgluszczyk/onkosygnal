@@ -1,7 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import Home from '../components/pages/Home.astro';
+import { ui } from '../i18n/ui';
 ---
-<Base>
+<Base description={ui.meta.home}>
   <Home />
 </Base>

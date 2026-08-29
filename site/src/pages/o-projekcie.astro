@@ -1,35 +1,51 @@
 ---
 import Base from '../layouts/Base.astro';
 import { sources } from '../lib/kb';
+import { ui } from '../i18n/ui';
+import { faqPageJsonLd } from '../lib/seo';
+
+// The copy below is the single source for both the rendered page and its FAQPage markup, so
+// the two can never drift apart — an answer in the markup that nobody can read on the page
+// would be spam, and this is the page where the project explains its own honesty.
+const whatIsIt =
+  'OnkoSygnał to narzędzie <strong>edukacyjne</strong>. Pomaga rozpoznać, które objawy warto ' +
+  'skonsultować z lekarzem POZ, i wyjaśnia prawa pacjenta onkologicznego w Polsce (karta DiLO). ' +
+  '<strong>Nie stawia diagnozy i nie oblicza ryzyka raka.</strong>';
+
+const noRiskReasons = [
+  '<strong>Brak polskich danych.</strong> Wartości predykcyjne objawów pochodzą z badań ' +
+    'brytyjskich (NICE NG12, badania Hamiltona). Polski KRN publikuje <em>zachorowalność</em>, ' +
+    'a nie predykcyjność objawów. Osobisty „procent” byłby przeniesioną liczbą brytyjską.',
+  '<strong>Psychologia.</strong> Wartości predykcyjne pojedynczych objawów są niskie, ' +
+    'a jednocześnie niepokoją i fałszywie uspokajają — dlatego powinien je interpretować ' +
+    'lekarz, a nie aplikacja.',
+  '<strong>Regulacje.</strong> Oprogramowanie, które na podstawie objawów podaje diagnozę lub ' +
+    'ryzyko, jest w UE (MDR) traktowane jako wyrób medyczny. Sygnalizowanie „warto to ' +
+    'skonsultować” pozostaje po bezpiecznej stronie tej granicy.',
+];
+
+const questions = {
+  whatIsIt: 'Czym jest OnkoSygnał?',
+  noRisk: 'Dlaczego nie podajemy „procentu ryzyka”?',
+};
+
+const faq = faqPageJsonLd([
+  { question: questions.whatIsIt, answerHtml: whatIsIt },
+  { question: questions.noRisk, answerHtml: noRiskReasons.join(' ') },
+]);
 ---
-<Base title="O projekcie">
+<Base title="O projekcie" description={ui.meta.about} ogType="article" structuredData={faq}>
   <section class="section wrap">
     <p class="eyebrow">O projekcie · metodyka</p>
     <article class="prose" style="margin-top:var(--space-3);">
       <h1>O projekcie i metodyce</h1>
-      <p>
-        OnkoSygnał to narzędzie <strong>edukacyjne</strong>. Pomaga rozpoznać, które objawy warto
-        skonsultować z lekarzem POZ, i wyjaśnia prawa pacjenta onkologicznego w Polsce (karta DiLO).
-        <strong>Nie stawia diagnozy i nie oblicza ryzyka raka.</strong>
-      </p>
 
-      <h2>Dlaczego nie podajemy „procentu ryzyka”</h2>
+      <h2>{questions.whatIsIt}</h2>
+      <p set:html={whatIsIt} />
+
+      <h2>{questions.noRisk}</h2>
       <ul>
-        <li>
-          <strong>Brak polskich danych.</strong> Wartości predykcyjne objawów pochodzą z badań
-          brytyjskich (NICE NG12, badania Hamiltona). Polski KRN publikuje <em>zachorowalność</em>,
-          a nie predykcyjność objawów. Osobisty „procent” byłby przeniesioną liczbą brytyjską.
-        </li>
-        <li>
-          <strong>Psychologia.</strong> Wartości predykcyjne pojedynczych objawów są niskie,
-          a jednocześnie niepokoją i fałszywie uspokajają — dlatego powinien je interpretować
-          lekarz, a nie aplikacja.
-        </li>
-        <li>
-          <strong>Regulacje.</strong> Oprogramowanie, które na podstawie objawów podaje diagnozę lub
-          ryzyko, jest w UE (MDR) traktowane jako wyrób medyczny. Sygnalizowanie „warto to
-          skonsultować” pozostaje po bezpiecznej stronie tej granicy.
-        </li>
+        {noRiskReasons.map((reason) => <li set:html={reason} />)}
       </ul>
 
       <h2>Źródła</h2>

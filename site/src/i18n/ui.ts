@@ -8,6 +8,24 @@ export const ui = {
     'To narzędzie edukacyjne, nie diagnoza. Nie oblicza Twojego ryzyka raka — pokazuje, ' +
     'które objawy warto skonsultować z lekarzem POZ i jak. W razie niepokojących objawów ' +
     'zawsze zgłoś się do lekarza. W stanie nagłym zadzwoń pod 112.',
+  // One description per page. Search engines and link previews both truncate around 155
+  // characters, and a shared description would make four pages look like one to a crawler.
+  meta: {
+    home:
+      'Rozpoznaj objawy alarmowe nowotworów, poznaj swoje prawo do szybkiej diagnostyki ' +
+      '(karta DiLO) i bezpłatne badania NFZ. Wiedza, nie diagnoza.',
+    about:
+      'Dlaczego OnkoSygnał nie podaje „procentu ryzyka” raka: brak polskich danych ' +
+      'predykcyjnych, psychologia liczb, regulacje MDR. Metodyka i źródła.',
+    privacy:
+      'Objawy, płeć i wiek przetwarzane są wyłącznie w Twojej przeglądarce — nic nie trafia ' +
+      'na serwer. Szkic polityki prywatności (RODO).',
+    terms:
+      'OnkoSygnał jest narzędziem edukacyjnym: nie stawia diagnozy, nie ocenia ryzyka i nie ' +
+      'jest wyrobem medycznym. Szkic regulaminu i zastrzeżeń.',
+  },
+  ogImageAlt:
+    'OnkoSygnał — wiedza, nie diagnoza. Objawy alarmowe, karta DiLO, bezpłatne badania NFZ.',
   hero: {
     kicker: 'ONKOSYGNAŁ • WIEDZA, NIE DIAGNOZA',
     title: 'Wsłuchaj się w sygnały. Zrozum je. Działaj spokojnie.',

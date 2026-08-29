@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import { isDraftRoute } from './src/lib/seo.ts';
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,7 +17,9 @@ export default defineConfig({
     locales: ['pl'],
     routing: { prefixDefaultLocale: false },
   },
-  integrations: [react(), sitemap()],
+  // The draft legal pages are noindex in Base.astro; keeping them out of the sitemap too means
+  // the two never contradict each other about the same URL.
+  integrations: [react(), sitemap({ filter: (page) => !isDraftRoute(page) })],
   vite: {
     plugins: [tailwindcss()],
   },

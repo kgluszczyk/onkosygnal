@@ -1,7 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
+import { ui } from '../i18n/ui';
 ---
-<Base title="Prywatność">
+<Base title="Prywatność" description={ui.meta.privacy} ogType="article">
   <section class="section wrap">
     <div class="tier tier--uwaga" style="max-width:var(--measure);">
       <span class="tier__label">Wersja robocza</span>
