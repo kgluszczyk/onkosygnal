@@ -13,7 +13,7 @@ import NavBar from '../components/ds/NavBar.astro';
 import Footer from '../components/ds/Footer.astro';
 import { ui } from '../i18n/ui';
 import { url } from '../lib/url';
-import { canonicalUrl, jsonLdScript, medicalWebPageJsonLd } from '../lib/seo';
+import { canonicalUrl, isDraftRoute, jsonLdScript, medicalWebPageJsonLd } from '../lib/seo';
 
 interface Props {
   title?: string;
@@ -35,7 +35,17 @@ const ogImage = canonicalUrl(url('og.png'), Astro.site);
 // The GitHub Pages build (base '/onkosygnal') is a preview of the same content that lives at
 // onkosygnal.pl. Letting it be indexed would put the project in competition with itself, so
 // that build asks to stay out of the index; production (base '/') never does.
+//
+// Draft legal pages are held back too, but only from indexing: they keep 'follow' so the
+// crawler still walks their links, and they stay perfectly reachable for anyone who clicks
+// through from the footer. What they must not be is the page someone lands on from a search
+// for „polityka prywatności OnkoSygnał" while they still say they are not binding.
 const isPreviewDeploy = import.meta.env.BASE_URL !== '/';
+const robots = isPreviewDeploy
+  ? 'noindex, nofollow'
+  : isDraftRoute(Astro.url.pathname)
+    ? 'noindex, follow'
+    : null;
 
 const jsonLdNodes = [
   medicalWebPageJsonLd({ name: pageTitle, description: desc, url: canonical, siteName: ui.siteName, siteUrl }),
@@ -51,7 +61,7 @@ const jsonLdNodes = [
     <title>{pageTitle}</title>
     <meta name="description" content={desc} />
     <link rel="canonical" href={canonical} />
-    {isPreviewDeploy && <meta name="robots" content="noindex, nofollow" />}
+    {robots && <meta name="robots" content={robots} />}
     <meta name="theme-color" content="#F5F1E8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#201D17" media="(prefers-color-scheme: dark)" />
     <link rel="icon" type="image/svg+xml" href={url('favicon.svg')} />

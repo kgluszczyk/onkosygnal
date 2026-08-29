@@ -7,6 +7,23 @@
 // consume it. Nothing emitted here may assert a diagnosis or a personal risk figure; the
 // type is MedicalWebPage (health *information*), never MedicalRiskEstimator.
 
+/**
+ * Pages that still carry the „Wersja robocza" banner and say in their own copy that they are
+ * not binding. They stay reachable and linked, but are kept out of the index and the sitemap
+ * until a lawyer has signed them off — an indexed draft privacy policy is a document people
+ * would reasonably rely on.
+ *
+ * Delete the slug here when the page stops being a draft; that is the only edit needed.
+ */
+export const DRAFT_ROUTES = ['prywatnosc', 'regulamin'];
+
+/** Accepts a path or an absolute URL, so the layout and the sitemap filter can share it. */
+export function isDraftRoute(urlOrPath: string): boolean {
+  const path = urlOrPath.includes('://') ? new URL(urlOrPath).pathname : urlOrPath;
+  const slug = path.replace(/\/+$/, '').split('/').pop() ?? '';
+  return DRAFT_ROUTES.includes(slug);
+}
+
 /** Strip our own inline markup so a JSON-LD answer reads exactly like the rendered copy. */
 export function plainText(html: string): string {
   return html

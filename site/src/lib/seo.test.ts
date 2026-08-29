@@ -1,5 +1,12 @@
 import { describe, it, expect } from 'vitest';
-import { canonicalUrl, plainText, faqPageJsonLd, jsonLdScript, medicalWebPageJsonLd } from './seo';
+import {
+  canonicalUrl,
+  faqPageJsonLd,
+  isDraftRoute,
+  jsonLdScript,
+  medicalWebPageJsonLd,
+  plainText,
+} from './seo';
 
 const PROD = new URL('https://onkosygnal.pl');
 const PAGES = new URL('https://kgluszczyk.github.io');
@@ -32,6 +39,29 @@ describe('canonicalUrl', () => {
 
   it('fails loudly rather than emitting a relative canonical', () => {
     expect(() => canonicalUrl('/', undefined)).toThrow(/site/);
+  });
+});
+
+describe('isDraftRoute', () => {
+  it('recognises the draft legal pages from a path', () => {
+    expect(isDraftRoute('/prywatnosc/')).toBe(true);
+    expect(isDraftRoute('/regulamin')).toBe(true);
+  });
+
+  it('recognises them from an absolute URL, as the sitemap filter passes them', () => {
+    expect(isDraftRoute('https://onkosygnal.pl/prywatnosc/')).toBe(true);
+    expect(isDraftRoute('https://kgluszczyk.github.io/onkosygnal/regulamin/')).toBe(true);
+  });
+
+  it('leaves the indexable pages alone', () => {
+    expect(isDraftRoute('/')).toBe(false);
+    expect(isDraftRoute('/o-projekcie/')).toBe(false);
+    expect(isDraftRoute('https://onkosygnal.pl/')).toBe(false);
+  });
+
+  it('does not mistake the base path for the page', () => {
+    // The Pages build serves the home page at /onkosygnal/ — that is not a draft route.
+    expect(isDraftRoute('/onkosygnal/')).toBe(false);
   });
 });
 
