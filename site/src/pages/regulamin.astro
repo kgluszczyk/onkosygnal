@@ -1,8 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
 import { url } from '../lib/url';
+import { ui } from '../i18n/ui';
 ---
-<Base title="Regulamin">
+<Base title="Regulamin" description={ui.meta.terms} ogType="article">
   <section class="section wrap">
     <div class="tier tier--uwaga" style="max-width:var(--measure);">
       <span class="tier__label">Wersja robocza</span>

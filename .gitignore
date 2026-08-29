@@ -17,6 +17,10 @@ site/test-results/
 site/playwright-report/
 site/blob-report/
 site/playwright/.cache/
+site/__shots/
+
+# Scratch dir for scripts/make-og.mjs (the rendered og.png itself is committed)
+site/.og-build/
 
 # OS / editor
 .DS_Store

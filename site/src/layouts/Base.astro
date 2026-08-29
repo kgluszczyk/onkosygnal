@@ -13,15 +13,34 @@ import NavBar from '../components/ds/NavBar.astro';
 import Footer from '../components/ds/Footer.astro';
 import { ui } from '../i18n/ui';
 import { url } from '../lib/url';
+import { canonicalUrl, jsonLdScript, medicalWebPageJsonLd } from '../lib/seo';
 
 interface Props {
   title?: string;
   description?: string;
+  /** OpenGraph object type — 'website' for the home page, 'article' for standing content. */
+  ogType?: 'website' | 'article';
+  /** Extra schema.org nodes for this page (e.g. a FAQPage), emitted beside MedicalWebPage. */
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
-const { title, description } = Astro.props;
+const { title, description, ogType = 'website', structuredData } = Astro.props;
 const pageTitle = title ? `${title} — ${ui.siteName}` : `${ui.siteName} — ${ui.tagline}`;
 const desc = description ?? ui.disclaimer;
 const cfBeacon = import.meta.env.PUBLIC_CF_BEACON;
+
+const canonical = canonicalUrl(Astro.url.pathname, Astro.site);
+const siteUrl = canonicalUrl(url(''), Astro.site);
+const ogImage = canonicalUrl(url('og.png'), Astro.site);
+
+// The GitHub Pages build (base '/onkosygnal') is a preview of the same content that lives at
+// onkosygnal.pl. Letting it be indexed would put the project in competition with itself, so
+// that build asks to stay out of the index; production (base '/') never does.
+const isPreviewDeploy = import.meta.env.BASE_URL !== '/';
+
+const jsonLdNodes = [
+  medicalWebPageJsonLd({ name: pageTitle, description: desc, url: canonical, siteName: ui.siteName, siteUrl }),
+  ...(Array.isArray(structuredData) ? structuredData : structuredData ? [structuredData] : []),
+];
 ---
 
 <!doctype html>
@@ -31,9 +50,35 @@ const cfBeacon = import.meta.env.PUBLIC_CF_BEACON;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{pageTitle}</title>
     <meta name="description" content={desc} />
+    <link rel="canonical" href={canonical} />
+    {isPreviewDeploy && <meta name="robots" content="noindex, nofollow" />}
     <meta name="theme-color" content="#F5F1E8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#201D17" media="(prefers-color-scheme: dark)" />
     <link rel="icon" type="image/svg+xml" href={url('favicon.svg')} />
+
+    {/* Link previews. One 1200x630 PNG is the size Facebook, X, LinkedIn, Slack, Discord
+        and WhatsApp all crop cleanly, so there is a single asset rather than per-platform ones. */}
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={ui.siteName} />
+    <meta property="og:locale" content="pl_PL" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ui.ogImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={desc} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ui.ogImageAlt} />
+
+    {/* schema.org: MedicalWebPage on every page, plus whatever the page itself declares. */}
+    {jsonLdNodes.map((node) => (
+      <script type="application/ld+json" is:inline set:html={jsonLdScript(node)} />
+    ))}
     {/* No-flash theme: apply saved/system theme before first paint. */}
     <script is:inline>
       (function () {
