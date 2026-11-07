@@ -36,7 +36,7 @@ export const ui = {
     emergency: 'Objawy nagłe? Zadzwoń 112 lub zgłoś się na SOR',
   },
   sections: {
-    signal: { n: '01', title: 'Sygnał', lead: 'Opisz, co czujesz — własnymi słowami.' },
+    signal: { n: '01', title: 'Sygnał', lead: 'Opisz własnymi słowami, co czujesz.' },
     context: { n: '02', title: 'Kontekst, nie wyrok' },
     signs: { n: '03', title: 'Objawy alarmowe' },
     dilo: { n: '04', title: 'Masz prawo do DiLO' },
@@ -45,12 +45,12 @@ export const ui = {
     emergency: { n: '07', title: 'Kiedy nie czekać' },
   },
   search: {
-    label: 'Opisz, co czujesz — własnymi słowami',
+    label: 'Opisz własnymi słowami, co czujesz',
     placeholder: 'np. „od trzech tygodni chrypka, która nie mija, i chudnę bez powodu”',
     button: 'Sprawdź sygnały',
     atInput: 'To wiedza, nie diagnoza — pokazuje, które objawy warto skonsultować z lekarzem.',
     privacy: 'Nic nie wysyłamy — analiza działa w Twojej przeglądarce.',
-    restingHint: 'Wpisz objawy powyżej. Pokażemy spokojne wskazówki i Twoje prawa — bez oceny ryzyka.',
+    restingHint: 'Wpisz objawy powyżej. Pokażemy spokojne wskazówki i Twoje prawa, bez oceny ryzyka.',
     recognized: 'Rozpoznane sygnały',
     empty: 'Wpisz objawy powyżej, aby zobaczyć spokojne wskazówki.',
     noMatch:
@@ -67,7 +67,7 @@ export const ui = {
       'nagłego zadzwoń pod 112 lub zgłoś się na SOR.',
     howCommon: 'Jak częsty w Polsce',
     casesPerYear: 'osób rocznie',
-    seedNote: 'dane szacunkowe — do weryfikacji',
+    seedNote: 'dane szacunkowe, do weryfikacji',
     context: 'To jak często występuje w Polsce — nie Twoje osobiste ryzyko.',
     ageEmphasis: 'Ten objaw jest szczególnie istotny w Twoim wieku.',
     whatToDo: 'Co zrobić',
@@ -88,7 +88,7 @@ export const ui = {
     intro:
       'Na podstawie płci i wieku możesz kwalifikować się do bezpłatnych badań ' +
       'profilaktycznych na NFZ (bez skierowania).',
-    eligible: 'Przysługuje Ci — bezpłatnie w ramach NFZ',
+    eligible: 'Przysługuje Ci bezpłatnie w ramach NFZ',
     every: 'co',
     years: 'lata / lat',
     ageRange: 'wiek',
@@ -111,7 +111,7 @@ export const ui = {
     symptoms: 'Rozpoznane sygnały',
     questions: 'Sugerowane pytania do lekarza',
     notes: 'Notatki lekarza',
-    diloNote: 'Część objawów może kwalifikować do karty DiLO — warto o to zapytać.',
+    diloNote: 'Część objawów może kwalifikować do karty DiLO. Warto o to zapytać.',
     footer:
       'Wygenerowano przez OnkoSygnał — narzędzie edukacyjne, nie diagnoza ani skierowanie.',
   },

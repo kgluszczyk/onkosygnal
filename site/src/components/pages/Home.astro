@@ -31,7 +31,7 @@ const diloSrc = getSource(dilo.source_id);
   <div class="tier__head"><span class="section__num">{S.context.n}</span>
     <h2 class="section__title">{S.context.title}</h2></div>
   <p style="margin-top:var(--space-3);color:var(--text-2);max-width:60ch;">
-    Nowotwory są w Polsce częste — ale objaw to jeszcze nie choroba. Te liczby pokazują skalę
+    Nowotwory są w Polsce częste, ale objaw to jeszcze nie choroba. Te liczby pokazują skalę
     w całej populacji, żeby dać kontekst, <strong>nie</strong> Twoje osobiste ryzyko.
   </p>
   <div class="tick-rule" style="margin-top:var(--space-5);"></div>
@@ -45,7 +45,7 @@ const diloSrc = getSource(dilo.source_id);
       </div>
     ))}
   </div>
-  <p class="context-note" style="margin-top:var(--space-5);">{ui.search.context} Większość objawów nie oznacza raka — ale wczesna rozmowa z lekarzem pomaga.</p>
+  <p class="context-note" style="margin-top:var(--space-5);">{ui.search.context} Większość objawów nie oznacza raka, ale wczesna rozmowa z lekarzem pomaga.</p>
 </section>
 
 <hr class="hairline hairline--draw wrap" style="max-width:var(--wrap);" />
@@ -55,7 +55,7 @@ const diloSrc = getSource(dilo.source_id);
   <div class="tier__head"><span class="section__num">{S.signs.n}</span>
     <h2 class="section__title">{S.signs.title}</h2></div>
   <p style="margin-top:var(--space-3);color:var(--text-2);max-width:60ch;">
-    Oficjalne objawy, na które warto zwrócić uwagę — pogrupowane wg nowotworu. Spokojnie: to lista
+    Oficjalne objawy, na które warto zwrócić uwagę (pogrupowane wg nowotworu). Spokojnie: to lista
     do rozmowy z lekarzem, nie diagnoza.
   </p>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:var(--space-4);margin-top:var(--space-5);">
@@ -145,11 +145,11 @@ const diloSrc = getSource(dilo.source_id);
     <div class="tier__head"><Lamp tier="nagly" />
       <span class="tier__label">{ui.search.emergency}</span></div>
     <p style="margin-top:var(--space-2);color:var(--text-1);">
-      Masywne krwawienie, nagła silna duszność, utrata przytomności, silny nagły ból — nie czekaj na wizytę.
+      W razie masywnego krwawienia, nagłej, silnej duszności, utraty przytomności lub nagłego, silnego bólu nie czekaj na wizytę.
     </p>
     <a class="btn btn--emergency" href="tel:112" style="margin-top:var(--space-3);">Zadzwoń 112</a>
   </div>
 </section>
 
 <!-- persistent emergency affordance -->
-<a class="btn btn--emergency emergency-mini no-print" href="tel:112" aria-label="Nagły przypadek — zadzwoń 112">112</a>
+<a class="btn btn--emergency emergency-mini no-print" href="tel:112" aria-label="Nagły przypadek: zadzwoń 112">112</a>

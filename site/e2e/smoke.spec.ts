@@ -7,7 +7,7 @@ test('home shows the persistent educational banderola (disclaimer)', async ({ pa
 
 test('a red-flag symptom surfaces guidance + the DiLO fast-track + doctor hand-off', async ({ page }) => {
   await page.goto('/');
-  await page.getByLabel(/opisz, co czujesz/i).fill('mam krew w stolcu od trzech tygodni');
+  await page.getByLabel(/opisz własnymi słowami, co czujesz/i).fill('mam krew w stolcu od trzech tygodni');
   await page.getByRole('button', { name: /sprawdź sygnały/i }).click();
 
   await expect(page.getByRole('heading', { name: /rozpoznane sygnały/i })).toBeVisible();
@@ -19,14 +19,14 @@ test('a red-flag symptom surfaces guidance + the DiLO fast-track + doctor hand-o
 
 test('an emergency symptom shows the 112/SOR rupture', async ({ page }) => {
   await page.goto('/');
-  await page.getByLabel(/opisz, co czujesz/i).fill('masywne krwawienie, dużo krwi');
+  await page.getByLabel(/opisz własnymi słowami, co czujesz/i).fill('masywne krwawienie, dużo krwi');
   await page.getByRole('button', { name: /sprawdź sygnały/i }).click();
   await expect(page.getByRole('alert').first()).toContainText(/112/);
 });
 
 test('the recognized symptom word gets the ochre caring-reader underline', async ({ page }) => {
   await page.goto('/');
-  await page.getByLabel(/opisz, co czujesz/i).fill('chrypka od miesiąca');
+  await page.getByLabel(/opisz własnymi słowami, co czujesz/i).fill('chrypka od miesiąca');
   // the mirror layer wraps recognized words in <mark class="mark">
   await expect(page.locator('mark.mark', { hasText: /chrypka/i }).first()).toBeVisible();
 });

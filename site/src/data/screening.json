@@ -7,7 +7,7 @@
     "age_max": 74,
     "interval_years": 2,
     "pl_description": "Bezpłatna mammografia w ramach programu NFZ dla kobiet w wieku 45–74 lat, co 2 lata.",
-    "booking_pl": "Nie jest wymagane skierowanie — można umówić się bezpośrednio.",
+    "booking_pl": "Nie jest wymagane skierowanie. Można umówić się bezpośrednio.",
     "source_id": "nfz-profilaktyka"
   },
   {
@@ -29,7 +29,7 @@
     "age_max": 65,
     "interval_years": null,
     "pl_description": "Bezpłatna kolonoskopia przesiewowa w ramach programu NFZ dla osób w wieku 50–65 lat.",
-    "booking_pl": "Sprawdź warunki programu — udział zależny od kryteriów NFZ.",
+    "booking_pl": "Sprawdź warunki programu: udział zależy od kryteriów NFZ.",
     "source_id": "nfz-profilaktyka"
   }
 ]
