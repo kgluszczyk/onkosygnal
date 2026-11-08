@@ -13,7 +13,7 @@ async function shot(name, { theme = 'light', width = 1280, height = 900, results
   const page = await ctx.newPage();
   await page.goto(BASE, { waitUntil: 'networkidle' });
   if (results) {
-    await page.getByLabel(/opisz, co czujesz/i).fill('od trzech tygodni chrypka i guzek na szyi, chudnę bez powodu');
+    await page.getByLabel(/opisz własnymi słowami, co czujesz/i).fill('od trzech tygodni chrypka i guzek na szyi, chudnę bez powodu');
     await page.getByRole('button', { name: /sprawdź sygnały/i }).click();
     await page.waitForTimeout(600);
   }

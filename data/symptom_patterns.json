@@ -8,8 +8,8 @@
     "associated_site_ids": ["colorectal"],
     "duration_context_pl": "zwłaszcza gdy utrzymuje się lub nawraca",
     "age_context_min": 50,
-    "guidance_pl": "To objaw alarmowy. Zgłoś się do lekarza POZ, aby ustalić przyczynę — nie odkładaj wizyty.",
-    "caveat_pl": "Najczęstszą przyczyną są hemoroidy lub szczeliny odbytu, a nie nowotwór — ale krew w stolcu zawsze wymaga oceny lekarza.",
+    "guidance_pl": "To objaw alarmowy. Zgłoś się do lekarza POZ, aby ustalić przyczynę. Nie odkładaj wizyty.",
+    "caveat_pl": "Najczęstszą przyczyną są hemoroidy lub szczeliny odbytu, a nie nowotwór. Mimo to krew w stolcu zawsze wymaga oceny lekarza.",
     "source_id": "nice-ng12"
   },
   {
@@ -22,7 +22,7 @@
     "duration_context_pl": "utrzymująca się ponad kilka tygodni",
     "age_context_min": 50,
     "guidance_pl": "Utrzymująca się zmiana rytmu wypróżnień to objaw wymagający konsultacji z lekarzem POZ.",
-    "caveat_pl": "Bywa skutkiem diety, leków lub zespołu jelita drażliwego — lekarz pomoże odróżnić przyczyny.",
+    "caveat_pl": "Bywa skutkiem diety, leków lub zespołu jelita drażliwego. Lekarz pomoże odróżnić przyczyny.",
     "source_id": "nice-ng12"
   },
   {
@@ -35,7 +35,7 @@
     "duration_context_pl": "utrzymujący się ponad 3 tygodnie",
     "age_context_min": 40,
     "guidance_pl": "Kaszel trwający ponad 3 tygodnie warto skonsultować z lekarzem POZ, zwłaszcza u osób palących.",
-    "caveat_pl": "Najczęściej to skutek infekcji, alergii lub refluksu — ale przewlekły kaszel wymaga sprawdzenia.",
+    "caveat_pl": "Najczęściej to skutek infekcji, alergii lub refluksu, ale przewlekły kaszel wymaga sprawdzenia.",
     "source_id": "nice-ng12"
   },
   {
@@ -47,7 +47,7 @@
     "associated_site_ids": ["lung"],
     "duration_context_pl": null,
     "age_context_min": 40,
-    "guidance_pl": "Odkrztuszanie krwi to objaw alarmowy — zgłoś się do lekarza POZ bez zwłoki.",
+    "guidance_pl": "Odkrztuszanie krwi to objaw alarmowy. Zgłoś się do lekarza POZ bez zwłoki.",
     "caveat_pl": "Może wynikać z infekcji oskrzeli, ale zawsze wymaga pilnej oceny lekarskiej.",
     "source_id": "nice-ng12"
   },
@@ -61,7 +61,7 @@
     "duration_context_pl": "niewyjaśniona i postępująca",
     "age_context_min": null,
     "guidance_pl": "Niezamierzony spadek masy ciała bez zmiany diety czy aktywności warto skonsultować z lekarzem POZ.",
-    "caveat_pl": "Przyczyn jest wiele (m.in. tarczyca, cukrzyca, stres) — objaw niespecyficzny, ale wymagający oceny.",
+    "caveat_pl": "Przyczyn jest wiele (m.in. tarczyca, cukrzyca, stres). To objaw niespecyficzny, ale wymagający oceny.",
     "source_id": "nice-ng12"
   },
   {
@@ -73,7 +73,7 @@
     "associated_site_ids": ["breast"],
     "duration_context_pl": null,
     "age_context_min": null,
-    "guidance_pl": "Każdy nowy guzek w piersi lub pod pachą powinien zostać oceniony przez lekarza — zgłoś się do POZ lub ginekologa.",
+    "guidance_pl": "Każdy nowy guzek w piersi lub pod pachą powinien zostać oceniony przez lekarza. Zgłoś się do POZ lub ginekologa.",
     "caveat_pl": "Większość guzków piersi to zmiany łagodne (np. torbiele), ale każdy nowy wymaga sprawdzenia.",
     "source_id": "nice-ng12"
   },
@@ -86,7 +86,7 @@
     "associated_site_ids": ["bladder", "prostate"],
     "duration_context_pl": "nawet jednorazowa i bezbolesna",
     "age_context_min": 45,
-    "guidance_pl": "Krew w moczu, nawet jednorazowa i bezbolesna, to objaw alarmowy — zgłoś się do lekarza POZ.",
+    "guidance_pl": "Krew w moczu, nawet jednorazowa i bezbolesna, to objaw alarmowy. Zgłoś się do lekarza POZ.",
     "caveat_pl": "Częstą przyczyną są infekcje lub kamica, ale krwiomocz zawsze wymaga diagnostyki.",
     "source_id": "nice-ng12"
   },
@@ -99,7 +99,7 @@
     "associated_site_ids": ["stomach"],
     "duration_context_pl": "utrzymujące się lub narastające",
     "age_context_min": null,
-    "guidance_pl": "Utrzymujące się trudności w połykaniu to objaw alarmowy — zgłoś się do lekarza POZ.",
+    "guidance_pl": "Utrzymujące się trudności w połykaniu to objaw alarmowy. Zgłoś się do lekarza POZ.",
     "caveat_pl": "Bywa skutkiem refluksu, ale narastająca dysfagia wymaga pilnej oceny.",
     "source_id": "nice-ng12"
   },
@@ -113,7 +113,7 @@
     "duration_context_pl": "utrzymująca się ponad 3 tygodnie",
     "age_context_min": 40,
     "guidance_pl": "Chrypka trwająca ponad 3 tygodnie bez infekcji wymaga konsultacji z lekarzem POZ.",
-    "caveat_pl": "Najczęściej to skutek przeciążenia głosu lub refluksu — ale utrzymująca się chrypka wymaga sprawdzenia.",
+    "caveat_pl": "Najczęściej to skutek przeciążenia głosu lub refluksu, ale utrzymująca się chrypka wymaga sprawdzenia.",
     "source_id": "nice-ng12"
   },
   {
@@ -138,7 +138,7 @@
     "associated_site_ids": ["pancreas"],
     "duration_context_pl": null,
     "age_context_min": null,
-    "guidance_pl": "Żółtaczka (zażółcenie skóry lub oczu) bez bólu to objaw alarmowy — zgłoś się pilnie do lekarza.",
+    "guidance_pl": "Żółtaczka (zażółcenie skóry lub oczu) bez bólu to objaw alarmowy. Zgłoś się pilnie do lekarza.",
     "caveat_pl": "Przyczyną bywają choroby wątroby lub kamica żółciowa, ale bezbolesna żółtaczka wymaga pilnej diagnostyki.",
     "source_id": "nice-ng12"
   },
@@ -152,7 +152,7 @@
     "duration_context_pl": "utrzymujące się i nietypowe dla Ciebie",
     "age_context_min": null,
     "guidance_pl": "Samo zmęczenie rzadko oznacza nowotwór. Jeśli jednak jest nietypowe, utrzymuje się i towarzyszą mu inne objawy (np. utrata masy ciała, niedokrwistość), skonsultuj się z lekarzem POZ.",
-    "caveat_pl": "To objaw bardzo niespecyficzny — najczęściej wynika z niedoboru snu, stresu, niedokrwistości lub chorób tarczycy.",
+    "caveat_pl": "To objaw bardzo niespecyficzny. Najczęściej wynika z niedoboru snu, stresu, niedokrwistości lub chorób tarczycy.",
     "source_id": "npo"
   },
   {
@@ -164,7 +164,7 @@
     "associated_site_ids": [],
     "duration_context_pl": null,
     "age_context_min": null,
-    "guidance_pl": "To może być stan nagły. Zadzwoń pod 112 lub natychmiast zgłoś się na SOR — nie czekaj na wizytę u lekarza POZ.",
+    "guidance_pl": "To może być stan nagły. Zadzwoń pod 112 lub natychmiast zgłoś się na SOR. Nie czekaj na wizytę u lekarza POZ.",
     "caveat_pl": "Niezależnie od przyczyny, obfite krwawienie wymaga natychmiastowej pomocy.",
     "source_id": "npo"
   },
@@ -178,7 +178,7 @@
     "duration_context_pl": null,
     "age_context_min": null,
     "guidance_pl": "Nagła, silna duszność to potencjalny stan nagły. Zadzwoń pod 112 lub zgłoś się na SOR.",
-    "caveat_pl": "Przyczyn jest wiele (m.in. serce, płuca) — w razie nagłej duszności liczy się czas.",
+    "caveat_pl": "Przyczyn jest wiele (m.in. serce, płuca). W razie nagłej duszności liczy się czas.",
     "source_id": "npo"
   }
 ]
